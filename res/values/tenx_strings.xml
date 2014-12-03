@@ -802,4 +802,11 @@
     <string name="smart_pixels_percent">Percent of pixels to disable</string>
     <string name="smart_pixels_shift">Burn-in protection interval</string>
 
+    <!-- Smart pulldown-->
+    <string name="smart_pulldown_title">Smart pulldown</string>
+    <string name="smart_pulldown_off">Off</string>
+    <string name="smart_pulldown_none">No notifications</string>
+    <string name="smart_pulldown_dismissable">No dismissable notifications</string>
+    <string name="smart_pulldown_ongoing">No ongoing notifications</string>
+
 </resources>
