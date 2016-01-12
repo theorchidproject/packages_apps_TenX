@@ -903,4 +903,8 @@
     <string name="qs_footer_edit_title">Edit icon</string>
     <string name="qs_footer_edit_summary">Display the tile edit icon in quick settings footer</string>
 
+    <!-- Show QS on lockscreen -->
+    <string name="show_qs_on_secure_keyguard_title">Quick settings</string>
+    <string name="show_qs_on_secure_keyguard_summary">Show quick settings on secure lockscreen</string>
+
 </resources>
