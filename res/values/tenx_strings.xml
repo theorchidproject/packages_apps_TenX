@@ -440,5 +440,13 @@
     <string name="theme_type_du_pitchblack">Pitch black</string>
     <string name="theme_type_dark_grey">Dark Grey</string>
     <string name="theme_type_material_ocean">Material Ocean</string>
+
+    <!-- Statusbar net monitor -->
+    <string name="sb_ntraffic_title">Statusbar Network Traffic</string>
+    <string name="traffic_title">Traffic indicators</string>
+    <string name="traffic_summary">Network Traffic settings</string>
+    <string name="network_traffic_state_title">Network traffic</string>
+    <string name="network_traffic_state_summary">Show net activity in statusbar</string>
+    <string name="network_traffic_autohide_threshold_title">Net activity autohide threshold (KB/s)</string>
        
 </resources>

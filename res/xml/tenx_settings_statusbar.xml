@@ -39,6 +39,12 @@
                    android:targetClass="com.android.systemui.tuner.StatusbarItemsActivity" />
         </Preference>
 
+        <Preference
+            android:key="traffic"
+            android:title="@string/traffic_title" 
+            android:summary="@string/traffic_summary"
+            android:fragment="com.tenx.settings.fragments.Traffic" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
