@@ -59,6 +59,14 @@
             android:fragment="com.android.settings.gestures.GestureSettings"
             settings:controller="com.android.settings.gestures.GesturesSettingPreferenceController"/>
 
+        <!-- Power menu -->
+        <Preference
+            android:key="power_menu"
+            android:title="@string/power_menu_title"
+            android:summary="@string/power_menu_summary"
+            android:fragment="com.tenx.settings.fragments.PowerMenu"
+            android:icon="@drawable/ic_settings_powermenu" />
+
         <!-- System -->
         <Preference
             android:key="system_category"
