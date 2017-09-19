@@ -17,6 +17,7 @@ package com.tenx.settings.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.preference.ListPreference;
@@ -31,15 +32,47 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-public class PowerMenu extends SettingsPreferenceFragment {
+import com.tenx.support.preferences.SystemSettingSwitchPreference;
+
+import com.tenx.settings.preferences.Utils;
+
+public class PowerMenu extends SettingsPreferenceFragment
+             implements Preference.OnPreferenceChangeListener {
 
     public static final String TAG = "PowerMenu";
+
+    private static final String KEY_POWERMENU_TORCH = "powermenu_torch";
+
+    private SystemSettingSwitchPreference mPowermenuTorch;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.power_menu);
+
+        final ContentResolver resolver = getActivity().getContentResolver();
+        final PreferenceScreen prefScreen = getPreferenceScreen();
+
+        mPowermenuTorch = (SystemSettingSwitchPreference) findPreference(KEY_POWERMENU_TORCH);
+        mPowermenuTorch.setOnPreferenceChangeListener(this);
+        if (!Utils.deviceSupportsFlashLight(getActivity())) {
+            prefScreen.removePreference(mPowermenuTorch);
+        } else {
+        mPowermenuTorch.setChecked((Settings.System.getInt(resolver,
+                Settings.System.POWERMENU_TORCH, 0) == 1));
+        }
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mPowermenuTorch) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.POWERMENU_TORCH, value ? 1 : 0);
+            return true;
+        }
+        return false;
     }
 
     @Override
