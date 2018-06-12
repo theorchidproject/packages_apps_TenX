@@ -1140,4 +1140,11 @@
     <string name="ambient_music_bottom">At the bottom (default)</string>
     <string name="ambient_music_center">Centered (under the cLock)</string>
 
+    <!-- Dashboard -->
+    <string name="dashboard_category">Settings Dashboard</string>
+    <string name="dashboard_conditions_title">Condition cards</string>
+    <string name="dashboard_conditions_summary">Show condition cards on the dashboard</string>
+    <string name="dashboard_suggestions_title">Suggestion cards</string>
+    <string name="dashboard_suggestions_summary">Show suggestion cards on the dashboard</string>
+
 </resources>
