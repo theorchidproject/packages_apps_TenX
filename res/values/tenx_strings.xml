@@ -1130,4 +1130,8 @@
     <string name="volume_steps_voice_call_title">Volume steps: Voice Call</string>
     <string name="volume_steps_reset">Reset</string>
 
+    <!-- Realme Parts -->
+    <string name="realme_parts_title">Realme Parts</string>
+    <string name="realme_parts_summary">Realme specific device parts</string>
+
 </resources>

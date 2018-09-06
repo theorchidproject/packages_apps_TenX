@@ -144,4 +144,15 @@
             android:fragment="com.tenx.settings.fragments.Misc"
             android:icon="@drawable/ic_settings_misc"/>
 
+        <!-- Realme Parts -->
+        <PreferenceScreen
+            android:key="realme_parts"
+            android:title="@string/realme_parts_title"
+            android:summary="@string/realme_parts_summary"
+            android:icon="@drawable/ic_settings_realmeparts">
+            <intent android:action="android.intent.action.MAIN"
+               android:targetPackage="com.realme.realmeparts"
+               android:targetClass ="com.realme.realmeparts.DeviceSettingsActivity" />
+        </PreferenceScreen>
+
 </PreferenceScreen>

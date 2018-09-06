@@ -31,12 +31,23 @@ import androidx.preference.Preference;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.android.internal.util.tenx.tenxUtils;
+
 public class TenXSettings extends SettingsPreferenceFragment {
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        final String KEY_REALME_PARTS = "realme_parts";
+        final String KEY_REALME_PARTS_PACKAGE_NAME = "com.realme.realmeparts";
+
         addPreferencesFromResource(R.xml.tenx_settings);
+
+        // Realme Parts
+        if (!tenxUtils.isPackageInstalled(getActivity(), KEY_REALME_PARTS_PACKAGE_NAME)) {
+            getPreferenceScreen().removePreference(findPreference(KEY_REALME_PARTS));
+        }
     }
 
     @Override
