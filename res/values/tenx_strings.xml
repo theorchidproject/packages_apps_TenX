@@ -432,4 +432,11 @@
     <string name="qs_columns_landscape_title">Columns (Landscape)</string>
     <string name="sysui_qqs_count_title">Columns (Quickbar)</string>
        
+    <!-- Statusbar Tuner -->
+    <string name="statusbar_icons_title">Icons</string>
+    <string name="statusbar_items_title">Statusbar items</string>
+
+    <!-- Lockscreen icons -->
+    <string name="lockscreen_tuner_title">Lockscreen shortcuts</string>
+       
 </resources>
