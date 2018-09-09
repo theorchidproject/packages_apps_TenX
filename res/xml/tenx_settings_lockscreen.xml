@@ -166,6 +166,17 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:title="@string/lockscreen_gesture_title">
+
+        <com.tenx.support.preferences.SystemSettingSwitchPreference
+            android:key="double_tap_sleep_lockscreen"
+            android:title="@string/double_tap_to_sleep_lockscreen_title"
+            android:summary="@string/double_tap_to_sleep_lockscreen_summary"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/lockscreen_color_title">
 
         <com.tenx.support.colorpicker.ColorPickerPreference

@@ -265,7 +265,7 @@
     <!-- Volume Button Music Control -->
     <string name="volume_rocker_music_controls_title">Music control</string>
     <string name="volume_rocker_music_controls_summary">Long press volume buttons to switch tracks while screen off</string>
-    
+
     <!-- Volume Wake -->
     <string name="volume_rocker_wake_title">Volume rocker wake</string>
     <string name="volume_rocker_wake_summary">Pressing the volume keys will wake your device</string>
@@ -418,5 +418,10 @@
     <string name="statusbar_gesture_title">Gestures</string>
     <string name="double_tap_to_sleep_statusbar_title">Double tap to sleep</string>
     <string name="double_tap_to_sleep_statusbar_summary">Double tap on statusbar to put the device to sleep</string>
+
+    <!-- Double Tap Lockscreen to Sleep -->
+    <string name="lockscreen_gesture_title">Gestures</string>
+    <string name="double_tap_to_sleep_lockscreen_title">Double tap to sleep</string>
+    <string name="double_tap_to_sleep_lockscreen_summary">Double tap on the top third or bottom shortcut area of the lock screen to put the device to sleep</string>
     
 </resources>
