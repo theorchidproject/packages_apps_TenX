@@ -78,6 +78,13 @@
             android:summary="@string/status_bar_logo_summary"
             android:defaultValue="false" />
 
+        <com.tenx.support.preferences.SystemSettingMasterSwitchPreference
+            android:key="carrier_label_enabled"
+            android:title="@string/carrier_label_title"
+            android:summary="@string/carrier_label_summary"
+            android:fragment="com.tenx.settings.fragments.CustomCarrierLabel"
+            android:defaultValue="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

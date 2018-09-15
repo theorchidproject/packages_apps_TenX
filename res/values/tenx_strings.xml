@@ -720,4 +720,15 @@
     <string name="status_bar_logo_color_accent">Accent</string>
     <string name="status_bar_logo_color_custom">Custom</string>
 
+    <!-- Custom carrier label and position -->
+    <string name="carrier_label_title">Carrier label</string>
+    <string name="carrier_label_summary">Customize the carrier label</string>
+    <string name="custom_carrier_label_title">Custom carrier label</string>
+    <string name="custom_carrier_label_explain">Please enter a new label. Leave blank to revert to stock label.</string>
+    <string name="custom_carrier_label_notset">Custom label currently not set</string>
+    <string name="show_carrier_title">Carrier label</string>
+    <string name="show_carrier_keyguard">Lockscreen</string>
+    <string name="show_carrier_statusbar">Statusbar</string>
+    <string name="show_carrier_both">Lockscreen &amp; statusbar</string>
+
 </resources>
