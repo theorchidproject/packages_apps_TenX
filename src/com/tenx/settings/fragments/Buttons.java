@@ -33,8 +33,10 @@ public class Buttons extends SettingsPreferenceFragment implements
     Preference.OnPreferenceChangeListener {
 
     private static final String VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
+    private static final String KEY_TORCH_LONG_PRESS_POWER_TIMEOUT = "torch_long_press_power_timeout";
 
     private ListPreference mVolumeKeyCursorControl;
+    private ListPreference mTorchLongPressPowerTimeout;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -53,6 +55,14 @@ public class Buttons extends SettingsPreferenceFragment implements
             mVolumeKeyCursorControl.setValue(Integer.toString(volumeRockerCursorControl));
             mVolumeKeyCursorControl.setSummary(mVolumeKeyCursorControl.getEntry());
 	}
+
+        mTorchLongPressPowerTimeout =
+                    (ListPreference) findPreference(KEY_TORCH_LONG_PRESS_POWER_TIMEOUT);
+        mTorchLongPressPowerTimeout.setOnPreferenceChangeListener(this);
+        int TorchTimeout = Settings.System.getInt(getContentResolver(),
+                        Settings.System.TORCH_LONG_PRESS_POWER_TIMEOUT, 0);
+        mTorchLongPressPowerTimeout.setValue(Integer.toString(TorchTimeout));
+        mTorchLongPressPowerTimeout.setSummary(mTorchLongPressPowerTimeout.getEntry());
     }
 
     @Override
@@ -67,6 +77,16 @@ public class Buttons extends SettingsPreferenceFragment implements
                     .findIndexOfValue(volumeKeyCursorControl);
             mVolumeKeyCursorControl
                     .setSummary(mVolumeKeyCursorControl.getEntries()[volumeKeyCursorControlIndex]);
+            return true;
+         } else if (preference == mTorchLongPressPowerTimeout) {
+            String TorchTimeout = (String) objValue;
+            int TorchTimeoutValue = Integer.parseInt(TorchTimeout);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.TORCH_LONG_PRESS_POWER_TIMEOUT, TorchTimeoutValue);
+            int TorchTimeoutIndex = mTorchLongPressPowerTimeout
+                    .findIndexOfValue(TorchTimeout);
+            mTorchLongPressPowerTimeout
+                    .setSummary(mTorchLongPressPowerTimeout.getEntries()[TorchTimeoutIndex]);
             return true;
         }
         return false;
