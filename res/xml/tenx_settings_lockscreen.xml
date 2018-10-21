@@ -30,6 +30,15 @@
             android:summary="@string/lock_clock_font_summary"
             android:persistent="false" />
 
+        <com.tenx.support.preferences.CustomSeekBarPreference
+            android:key="lockclock_font_size"
+            android:title="@string/lockclock_font_size_title"
+            android:max="101"
+            settings:min="65"
+            settings:units="dp"
+            android:persistent="false"
+            android:defaultValue="78" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -42,6 +51,15 @@
             android:entries="@array/lock_clock_fonts_entries"
             android:entryValues="@array/lock_clock_fonts_values"
             android:summary="@string/lock_date_font_summary"
+            android:persistent="false" />
+
+        <com.tenx.support.preferences.CustomSeekBarPreference
+            android:key="lockdate_font_size"
+            android:title="@string/lockdate_font_size_title"
+            android:max="25"
+            settings:min="10"
+            settings:units="dp"
+            android:defaultValue="18"
             android:persistent="false" />
 
     </PreferenceCategory>
