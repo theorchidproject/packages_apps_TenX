@@ -559,4 +559,8 @@
     <string name="lock_weather_city_font_summary">Change the default font of the lockscreen weather city</string>
     <string name="lock_weather_city_dialog_title">Select lock weather city font</string>
 
+    <!-- Show VoLTE icon on statusbar -->
+    <string name="volte_icon_title">VoLTE icon</string>
+    <string name="volte_icon_summary">Display VoLTE icon</string>
+
 </resources>
