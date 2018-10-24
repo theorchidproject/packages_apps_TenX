@@ -67,6 +67,30 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:title="@string/lockscreen_owner_info_title">
+
+        <ListPreference
+            android:key="lock_ownerinfo_fonts"
+            android:title="@string/lock_ownerinfo_font_title"
+            android:dialogTitle="@string/lock_ownerinfo_font_dialog_title"
+            android:entries="@array/lock_clock_fonts_entries"
+            android:entryValues="@array/lock_clock_fonts_values"
+            android:summary="%s"
+            android:defaultValue="0"
+            android:persistent="false" />
+
+        <com.tenx.support.preferences.CustomSeekBarPreference
+            android:key="lockowner_font_size"
+            android:title="@string/lockowner_font_size_title"
+            android:max="25"
+            settings:min="10"
+            settings:units="sp"
+            android:defaultValue="21"
+            android:persistent="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/lockscreen_color_title">
 
         <com.tenx.support.colorpicker.ColorPickerPreference
