@@ -70,6 +70,7 @@ public class Animations extends SettingsPreferenceFragment
     private static final String SCROLLINGCACHE_DEFAULT = "2";
     private static final String ANIMATION_DURATION = "animation_duration";
     private static final String KEY_SCREEN_OFF_ANIMATION = "screen_off_animation";
+    private static final String POWER_MENU_ANIMATIONS = "power_menu_animations";
 
     private ListPreference mToastAnimation;
     private ListPreference mScrollingCachePref;
@@ -88,6 +89,7 @@ public class Animations extends SettingsPreferenceFragment
     private ListPreference mWallpaperIntraClose;
     private CustomSeekBarPreference mAnimationDuration;
     private ListPreference mScreenOffAnimation;
+    private ListPreference mPowerMenuAnimations;
 
     private int[] mAnimations;
     private String[] mAnimationsStrings;
@@ -219,6 +221,12 @@ public class Animations extends SettingsPreferenceFragment
         mScreenOffAnimation.setValue(Integer.toString(screenOffAnimation));
         mScreenOffAnimation.setSummary(mScreenOffAnimation.getEntry());
         mScreenOffAnimation.setOnPreferenceChangeListener(this);
+
+        mPowerMenuAnimations = (ListPreference) findPreference(POWER_MENU_ANIMATIONS);
+        mPowerMenuAnimations.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.POWER_MENU_ANIMATIONS, 0)));
+        mPowerMenuAnimations.setSummary(mPowerMenuAnimations.getEntry());
+        mPowerMenuAnimations.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -257,6 +265,12 @@ public class Animations extends SettingsPreferenceFragment
             int index = mScreenOffAnimation.findIndexOfValue((String) newValue);
             mScreenOffAnimation.setSummary(mScreenOffAnimation.getEntries()[index]);
             Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_OFF_ANIMATION, value);
+            return true;
+        } else if (preference == mPowerMenuAnimations) {
+            Settings.System.putInt(getContentResolver(), Settings.System.POWER_MENU_ANIMATIONS,
+                    Integer.valueOf((String) newValue));
+            mPowerMenuAnimations.setValue(String.valueOf(newValue));
+            mPowerMenuAnimations.setSummary(mPowerMenuAnimations.getEntry());
             return true;
         } else if (preference == mScrollingCachePref) {
             if (newValue != null) {
