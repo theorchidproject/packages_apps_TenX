@@ -35,6 +35,12 @@
             android:summary="@string/brightness_icon_summary"
             android:defaultValue="true" />
 
+        <com.tenx.support.preferences.SecureSettingSwitchPreference
+            android:key="qs_show_brightness_buttons"
+            android:title="@string/brightness_buttons_title"
+            android:summary="@string/brightness_buttons_summary"
+            android:defaultValue="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
