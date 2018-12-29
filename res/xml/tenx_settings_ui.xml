@@ -96,6 +96,13 @@
             android:entryValues="@array/qs_tile_style_tint_values"
             android:dependency="qs_tile_style" />
 
+	<com.tenx.support.preferences.SystemSettingListPreference
+            android:key="switch_style"
+            android:title="@string/switch_style_title"
+            android:persistent="false"
+            android:entries="@array/switch_style_entries"
+            android:entryValues="@array/switch_style_values" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
