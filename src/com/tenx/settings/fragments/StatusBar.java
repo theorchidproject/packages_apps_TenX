@@ -36,8 +36,10 @@ public class StatusBar extends SettingsPreferenceFragment implements
     Preference.OnPreferenceChangeListener {
 
     private static final String NETWORK_TRAFFIC_STATE = "network_traffic_state";
+    private static final String STATUS_BAR_LOGO = "status_bar_logo";
 
     private SystemSettingMasterSwitchPreference mNetworkTraffic;
+    private SystemSettingMasterSwitchPreference mStatusBarLogo;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -50,6 +52,11 @@ public class StatusBar extends SettingsPreferenceFragment implements
         mNetworkTraffic.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.NETWORK_TRAFFIC_STATE, 0) == 1));
         mNetworkTraffic.setOnPreferenceChangeListener(this);
+
+        mStatusBarLogo = (SystemSettingMasterSwitchPreference) findPreference(STATUS_BAR_LOGO);
+        mStatusBarLogo.setChecked((Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_LOGO, 0) == 1));
+        mStatusBarLogo.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -59,6 +66,11 @@ public class StatusBar extends SettingsPreferenceFragment implements
             boolean value = (Boolean) newValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                    Settings.System.NETWORK_TRAFFIC_STATE, value ? 1 : 0);
+            return true;
+        } else if (preference == mStatusBarLogo) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_LOGO, value ? 1 : 0);
             return true;
         }
         return false;

@@ -71,6 +71,13 @@
             android:summary="@string/traffic_summary"
             android:fragment="com.tenx.settings.fragments.Traffic" />
 
+        <com.tenx.support.preferences.SystemSettingMasterSwitchPreference
+            android:key="status_bar_logo"
+            android:fragment="com.tenx.settings.fragments.StatusbarLogo"
+            android:title="@string/status_bar_logo_title"
+            android:summary="@string/status_bar_logo_summary"
+            android:defaultValue="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
