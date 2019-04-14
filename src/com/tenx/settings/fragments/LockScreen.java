@@ -53,8 +53,10 @@ public class LockScreen extends SettingsPreferenceFragment implements
 
     private static final String LOCK_CLOCK_FONTS = "lock_clock_fonts";
     private static final String LOCK_DATE_FONTS = "lock_date_fonts";
+    private static final String CUSTOM_TEXT_CLOCK_FONTS = "custom_text_clock_fonts";
     private static final String CLOCK_FONT_SIZE  = "lockclock_font_size";
     private static final String DATE_FONT_SIZE  = "lockdate_font_size";
+    private static final String CUSTOM_TEXT_CLOCK_FONT_SIZE  = "custom_text_clock_font_size";
     private static final String LOCK_OWNERINFO_FONTS = "lock_ownerinfo_fonts";
     private static final String LOCKOWNER_FONT_SIZE = "lockowner_font_size";
     private static final String LOCKSCREEN_PHONE_ICON_COLOR = "lockscreen_phone_icon_color";
@@ -67,9 +69,11 @@ public class LockScreen extends SettingsPreferenceFragment implements
     private ListPreference mLockClockFonts;
     private ListPreference mLockDateFonts;
     private ListPreference mLockOwnerInfoFonts;
+    private ListPreference mTextClockFonts;
     private CustomSeekBarPreference mClockFontSize;
     private CustomSeekBarPreference mDateFontSize;
     private CustomSeekBarPreference mOwnerInfoFontSize;
+    private CustomSeekBarPreference mCustomTextClockFontSize;
     private ColorPickerPreference mLockscreenPhoneColorPicker;
     private ColorPickerPreference mLockscreenCameraColorPicker;
     private ColorPickerPreference mLockscreenIndicationTextColorPicker;
@@ -100,6 +104,12 @@ public class LockScreen extends SettingsPreferenceFragment implements
         mLockDateFonts.setSummary(mLockDateFonts.getEntry());
         mLockDateFonts.setOnPreferenceChangeListener(this);
 
+        mTextClockFonts = (ListPreference) findPreference(CUSTOM_TEXT_CLOCK_FONTS);
+        mTextClockFonts.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.CUSTOM_TEXT_CLOCK_FONTS, 32)));
+        mTextClockFonts.setSummary(mTextClockFonts.getEntry());
+        mTextClockFonts.setOnPreferenceChangeListener(this);
+
         mClockFontSize = (CustomSeekBarPreference) findPreference(CLOCK_FONT_SIZE);
         mClockFontSize.setValue(Settings.System.getInt(getContentResolver(),
                 Settings.System.LOCKCLOCK_FONT_SIZE, 78));
@@ -120,6 +130,11 @@ public class LockScreen extends SettingsPreferenceFragment implements
         mOwnerInfoFontSize.setValue(Settings.System.getInt(getContentResolver(),
                 Settings.System.LOCKOWNER_FONT_SIZE,21));
         mOwnerInfoFontSize.setOnPreferenceChangeListener(this);
+
+        mCustomTextClockFontSize = (CustomSeekBarPreference) findPreference(CUSTOM_TEXT_CLOCK_FONT_SIZE);
+        mCustomTextClockFontSize.setValue(Settings.System.getInt(getContentResolver(),
+                Settings.System.CUSTOM_TEXT_CLOCK_FONT_SIZE, 40));
+        mCustomTextClockFontSize.setOnPreferenceChangeListener(this);
 
         mLockscreenPhoneColorPicker = (ColorPickerPreference) findPreference(LOCKSCREEN_PHONE_ICON_COLOR);
         mLockscreenPhoneColorPicker.setOnPreferenceChangeListener(this);
@@ -185,6 +200,12 @@ public class LockScreen extends SettingsPreferenceFragment implements
             mLockDateFonts.setValue(String.valueOf(newValue));
             mLockDateFonts.setSummary(mLockDateFonts.getEntry());
             return true;
+        } else if (preference == mTextClockFonts) {
+            Settings.System.putInt(getContentResolver(), Settings.System.CUSTOM_TEXT_CLOCK_FONTS,
+                    Integer.valueOf((String) newValue));
+            mTextClockFonts.setValue(String.valueOf(newValue));
+            mTextClockFonts.setSummary(mTextClockFonts.getEntry());
+            return true;
         } else if (preference == mClockFontSize) {
             int top = (Integer) newValue;
             Settings.System.putInt(getContentResolver(),
@@ -205,6 +226,11 @@ public class LockScreen extends SettingsPreferenceFragment implements
             int top = (Integer) newValue;
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LOCKOWNER_FONT_SIZE, top*1);
+            return true;
+        } else if (preference == mCustomTextClockFontSize) {
+            int top = (Integer) newValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.CUSTOM_TEXT_CLOCK_FONT_SIZE, top*1);
             return true;
         } else if (preference == mLockscreenCameraColorPicker) {
             String hex = ColorPickerPreference.convertToARGB(
