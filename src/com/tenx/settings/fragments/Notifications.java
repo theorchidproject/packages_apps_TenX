@@ -16,6 +16,7 @@
 package com.tenx.settings.fragments;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -29,11 +30,15 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.tenx.support.preferences.SystemSettingMasterSwitchPreference;
+import com.tenx.support.preferences.GlobalSettingMasterSwitchPreference;
 
 public class Notifications extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
     public static final String TAG = "Notifications";
+    private static final String HEADS_UP_NOTIFICATIONS_ENABLED = "heads_up_notifications_enabled";
+
+    private GlobalSettingMasterSwitchPreference mHeadsUpEnabled;
 
     private static final String AMBIENT_NOTIFICATION_LIGHT = "pulse_ambient_light";
 
@@ -45,12 +50,24 @@ public class Notifications extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.tenx_settings_notifications);
         PreferenceScreen prefScreen = getPreferenceScreen();
         final Resources res = getResources();
+        final ContentResolver resolver = getActivity().getContentResolver();
 
         mEdgeLightEnabled = (SystemSettingMasterSwitchPreference) findPreference(AMBIENT_NOTIFICATION_LIGHT);
         mEdgeLightEnabled.setOnPreferenceChangeListener(this);
         int edgeLightEnabled = Settings.System.getInt(getContentResolver(),
                 AMBIENT_NOTIFICATION_LIGHT, 0);
         mEdgeLightEnabled.setChecked(edgeLightEnabled != 0);
+
+        mHeadsUpEnabled = (GlobalSettingMasterSwitchPreference) findPreference(HEADS_UP_NOTIFICATIONS_ENABLED);
+        mHeadsUpEnabled.setOnPreferenceChangeListener(this);
+        int headsUpEnabled = Settings.Global.getInt(getContentResolver(),
+                HEADS_UP_NOTIFICATIONS_ENABLED, 1);
+        mHeadsUpEnabled.setChecked(headsUpEnabled != 0);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     @Override
@@ -59,6 +76,11 @@ public class Notifications extends SettingsPreferenceFragment
             boolean value = (Boolean) newValue;
             Settings.System.putInt(getContentResolver(),
                     AMBIENT_NOTIFICATION_LIGHT, value ? 1 : 0);
+            return true;
+        } else if (preference == mHeadsUpEnabled) {
+            boolean value = (Boolean) newValue;
+            Settings.Global.putInt(getContentResolver(),
+		            HEADS_UP_NOTIFICATIONS_ENABLED, value ? 1 : 0);
             return true;
         }
         return false;
