@@ -21,6 +21,12 @@
     <PreferenceCategory
         android:title="@string/volume_buttons_title">
 
+        <Preference
+            android:key="vol_steps"
+            android:title="@string/volume_steps_title"
+            android:summary="@string/volume_steps_summary"
+            android:fragment="com.tenx.settings.fragments.VolumeSteps" />
+
         <ListPreference
             android:dialogTitle="@string/volume_key_cursor_control_title"
             android:entries="@array/volume_key_cursor_control_entries"
