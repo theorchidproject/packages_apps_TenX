@@ -595,4 +595,8 @@
     <string name="file_header_select_title">Select local image</string>
     <string name="file_header_select_summary">Select image from storage</string>
 
+    <!-- Lock screen media blur -->
+    <string name="lockscreen_media_title">Media</string>
+    <string name="lockscreen_media_blur_title">Media artwork blur level</string>
+
 </resources>
