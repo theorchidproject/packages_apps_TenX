@@ -39,6 +39,24 @@
             android:summary="@string/quick_settings_vibrate_summary"
             android:defaultValue="false"/>
 
+        <com.tenx.support.preferences.CustomSeekBarPreference
+            android:key="qs_columns_portrait"
+            android:title="@string/qs_columns_portrait_title"
+            android:max="8"
+            settings:min="3"
+            settings:units=""
+            android:defaultValue="3"
+            android:persistent="false" />
+
+        <com.tenx.support.preferences.CustomSeekBarPreference
+            android:key="qs_columns_landscape"
+            android:title="@string/qs_columns_landscape_title"
+            android:max="8"
+            settings:min="3"
+            settings:units=""
+            android:defaultValue="3"
+            android:persistent="false" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
