@@ -1,4 +1,4 @@
-	<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright (C) 2020 The TenX-OS Project
 
@@ -459,5 +459,7 @@
     <string name="show_network_traffic_down">Down</string>
     <string name="show_network_traffic_all">Both</string>
     <string name="nettraf_font_size">Single net font size</string>
+    <string name="show_network_traffic_combined">Combined (Upload + Download)</string>
+    <string name="show_network_traffic_dynamic">Dynamic</string>
        
 </resources>
