@@ -19,7 +19,7 @@
     android:title="@string/tenx_settings_title" >
 
          <!-- Ambient Display -->
-         <Preference
+         <com.tenx.settings.preferences.TenXPreference
             android:key="ambient_display_custom"
             android:persistent="false"
             android:title="@string/ambient_display_custom_title"
@@ -29,10 +29,10 @@
                android:action="android.intent.action.MAIN"
                android:targetPackage="com.custom.ambient.display"
                android:targetClass="com.custom.ambient.display.DozeSettings" />
-         </Preference>
+         </com.tenx.settings.preferences.TenXPreference>
 
         <!-- User Interface -->
-        <Preference
+        <com.tenx.settings.preferences.TenXPreference
             android:key="ui_category"
             android:title="@string/tenx_title"
             android:summary="@string/tenx_summary"
@@ -40,7 +40,7 @@
             android:icon="@drawable/ic_settings_tenx"/>
 
         <!-- Screen -->
-        <Preference
+        <com.tenx.settings.preferences.TenXPreference
             android:key="screen_category"
             android:title="@string/screen_title"
             android:summary="@string/screen_summary"
@@ -48,7 +48,7 @@
             android:icon="@drawable/ic_settings_screen"/>
 
         <!-- Status Bar -->
-        <Preference
+        <com.tenx.settings.preferences.TenXPreference
             android:key="statusbar_category"
             android:title="@string/statusbar_title"
             android:summary="@string/statusbar_summary"
@@ -56,7 +56,7 @@
             android:icon="@drawable/ic_settings_statusbar"/>
 
         <!-- Quick Settings -->
-        <Preference
+        <com.tenx.settings.preferences.TenXPreference
             android:key="quicksettings_category"
             android:title="@string/quicksettings_title"
             android:summary="@string/quicksettings_summary"
@@ -64,7 +64,7 @@
             android:icon="@drawable/ic_settings_quicksettings"/>
 
         <!-- Buttons -->
-        <Preference
+        <com.tenx.settings.preferences.TenXPreference
             android:key="buttons_category"
             android:title="@string/buttons_title"
             android:summary="@string/buttons_summary"
@@ -72,7 +72,7 @@
             android:icon="@drawable/ic_settings_buttons"/>
 
         <!-- Gestures -->
-        <Preference
+        <com.tenx.settings.preferences.TenXPreference
             android:key="gesture_settings"
             android:title="@string/gesture_preference_title"
             android:summary="@string/gestures_summary"
@@ -81,7 +81,7 @@
             settings:controller="com.android.settings.gestures.GesturesSettingPreferenceController"/>
 
         <!-- Power menu -->
-        <Preference
+        <com.tenx.settings.preferences.TenXPreference
             android:key="power_menu"
             android:title="@string/power_menu_title"
             android:summary="@string/power_menu_summary"
@@ -89,7 +89,7 @@
             android:icon="@drawable/ic_settings_powermenu" />
 
         <!-- System -->
-        <Preference
+        <com.tenx.settings.preferences.TenXPreference
             android:key="system_category"
             android:title="@string/system_settings_title"
             android:summary="@string/system_settings_summary"
@@ -97,7 +97,7 @@
             android:icon="@drawable/ic_settings_system" />
 
         <!-- Lock Screen -->
-        <Preference
+        <com.tenx.settings.preferences.TenXPreference
             android:key="lockscreen_category"
             android:title="@string/lockscreen_title"
             android:summary="@string/lockscreen_summary"
@@ -105,7 +105,7 @@
             android:icon="@drawable/ic_settings_lockscreen"/>
 
         <!-- Notifications -->
-        <Preference
+        <com.tenx.settings.preferences.TenXPreference
             android:key="notifications_category"
             android:title="@string/notifications_title"
             android:summary="@string/notifications_summary"
@@ -113,7 +113,7 @@
             android:icon="@drawable/ic_settings_notifications"/>
 
         <!-- Nav bar -->
-        <Preference
+        <com.tenx.settings.preferences.TenXPreference
             android:key="navbar_category"
             android:title="@string/navigation_title"
             android:summary="@string/navigation_summary"
@@ -121,7 +121,7 @@
             android:icon="@drawable/ic_settings_navbar" />
 
         <!-- Battery Saving -->
-        <Preference
+        <com.tenx.settings.preferences.TenXPreference
             android:key="battery_category"
             android:title="@string/battery_title"
             android:summary="@string/battery_saving_summary"
@@ -129,7 +129,7 @@
             android:icon="@drawable/ic_settings_battery"/>
 
         <!-- Animation -->
-        <Preference
+        <com.tenx.settings.preferences.TenXPreference
             android:key="animations_category"
             android:title="@string/animations_title"
             android:summary="@string/animations_summary"
@@ -137,7 +137,7 @@
             android:icon="@drawable/ic_settings_animations"/>
 
         <!-- Misc -->
-        <Preference
+        <com.tenx.settings.preferences.TenXPreference
             android:key="misc_category"
             android:title="@string/misc_title"
             android:summary="@string/misc_summary"
@@ -145,7 +145,7 @@
             android:icon="@drawable/ic_settings_misc"/>
 
         <!-- Realme Parts -->
-        <PreferenceScreen
+        <com.tenx.settings.preferences.TenXPreference
             android:key="realme_parts"
             android:title="@string/realme_parts_title"
             android:summary="@string/realme_parts_summary"
@@ -153,10 +153,10 @@
             <intent android:action="android.intent.action.MAIN"
                android:targetPackage="com.realme.realmeparts"
                android:targetClass ="com.realme.realmeparts.DeviceSettingsActivity" />
-        </PreferenceScreen>
+        </com.tenx.settings.preferences.TenXPreference>
 
         <!-- About US -->
-        <Preference
+        <com.tenx.settings.preferences.TenXPreference
             android:key="about_us_category"
             android:title="@string/about_us_title"
             android:summary="@string/about_us_summary"
