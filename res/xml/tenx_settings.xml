@@ -39,6 +39,14 @@
             android:fragment="com.tenx.settings.fragments.UserInterface" 
             android:icon="@drawable/ic_settings_tenx"/>
 
+        <!-- Screen -->
+        <Preference
+            android:key="screen_category"
+            android:title="@string/screen_title"
+            android:summary="@string/screen_summary"
+            android:fragment="com.tenx.settings.fragments.Screen"
+            android:icon="@drawable/ic_settings_screen"/>
+
         <!-- Status Bar -->
         <Preference
             android:key="statusbar_category"

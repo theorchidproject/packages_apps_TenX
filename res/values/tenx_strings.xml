@@ -46,6 +46,8 @@
     <string name="ambient_display_custom_summary">Ambient display customisations.</string>
     <string name="system_settings_title">System</string>
     <string name="system_settings_summary">System customisations.</string>
+    <string name="screen_title">Screen</string>
+    <string name="screen_summary">Screen customisations.</string>
 
     <!-- Power Menu -->
     <string name="powermenu_items">Items</string>
