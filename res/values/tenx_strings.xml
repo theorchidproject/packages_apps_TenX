@@ -607,4 +607,9 @@
     <string name="hide_lockicon_title">Hide lock icon</string>
     <string name="hide_lockicon_summary">Hide the lock icon on lockscreen</string>
 
+    <!-- QS Footer Text -->
+    <string name="qs_panel_title">Panel</string>
+    <string name="qs_footer_text_title">QS footer text</string>
+    <string name="qs_footer_text_summary">Display text at bottom of QS panel</string>
+
 </resources>
