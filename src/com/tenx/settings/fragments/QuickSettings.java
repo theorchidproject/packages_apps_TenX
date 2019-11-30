@@ -31,6 +31,7 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.tenx.support.preferences.CustomSeekBarPreference;
+import com.tenx.support.preferences.SystemSettingEditTextPreference;
 
 public class QuickSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
@@ -39,11 +40,13 @@ public class QuickSettings extends SettingsPreferenceFragment
     private static final String PREF_COLUMNS_LANDSCAPE = "qs_columns_landscape";
     private static final String PREF_COLUMNS_QUICKBAR = "qs_quickbar_columns";
     private static final String KEY_QS_PANEL_ALPHA = "qs_panel_alpha";
+    private static final String TENX_FOOTER_TEXT_STRING = "tenx_footer_text_string";
 
     private CustomSeekBarPreference mQsColumnsPortrait;
     private CustomSeekBarPreference mQsColumnsLandscape;
     private CustomSeekBarPreference mQsColumnsQuickbar;
     private CustomSeekBarPreference mQsPanelAlpha;
+    private SystemSettingEditTextPreference mFooterString;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,6 +78,18 @@ public class QuickSettings extends SettingsPreferenceFragment
                 Settings.System.QS_PANEL_BG_ALPHA, 255);
         mQsPanelAlpha.setValue((int)(((double) qsPanelAlpha / 255) * 100));
         mQsPanelAlpha.setOnPreferenceChangeListener(this);
+
+        mFooterString = (SystemSettingEditTextPreference) findPreference(TENX_FOOTER_TEXT_STRING);
+        mFooterString.setOnPreferenceChangeListener(this);
+        String footerString = Settings.System.getString(getContentResolver(),
+                TENX_FOOTER_TEXT_STRING);
+        if (footerString != null && footerString != "")
+            mFooterString.setText(footerString);
+        else {
+            mFooterString.setText("Ten-X");
+            Settings.System.putString(getActivity().getContentResolver(),
+                    Settings.System.TENX_FOOTER_TEXT_STRING, "Ten-X");
+        }
    }
 
     @Override
@@ -100,6 +115,16 @@ public class QuickSettings extends SettingsPreferenceFragment
             int trueValue = (int) (((double) bgAlpha / 100) * 255);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.QS_PANEL_BG_ALPHA, trueValue);
+        } else if (preference == mFooterString) {
+            String value = (String) newValue;
+            if (value != "" && value != null)
+                Settings.System.putString(getActivity().getContentResolver(),
+                        Settings.System.TENX_FOOTER_TEXT_STRING, value);
+            else {
+                mFooterString.setText("Ten-X");
+                Settings.System.putString(getActivity().getContentResolver(),
+                        Settings.System.TENX_FOOTER_TEXT_STRING, "Ten-X");
+            }
             return true;
         }
         return false;

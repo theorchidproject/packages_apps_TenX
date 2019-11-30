@@ -103,6 +103,13 @@
             android:summary="@string/qs_footer_text_summary"
             android:defaultValue="false"/>
 
+        <com.tenx.support.preferences.SystemSettingEditTextPreference
+            android:key="tenx_footer_text_string"
+            android:title="@string/qs_footer_text_string_title"
+            android:summary="@string/qs_footer_text_string_summary"
+            android:dependency="tenx_footer_text_show"
+            android:defaultValue="Ten-X" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
