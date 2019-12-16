@@ -70,7 +70,9 @@ public class LockScreen extends SettingsPreferenceFragment implements
     private static final String LOCKSCREEN_WEATHER_CITY_COLOR = "lockscreen_weather_city_color";
     private static final String LOCKSCREEN_WEATHER_ICON_COLOR = "lockscreen_weather_icon_color";
     private static final String LOCKSCREEN_WEATHER_ENABLED = "lockscreen_weather_enabled";
+    private static final String FOD_SETTINGS_CATEGORY = "fod_settings";
 
+    private Preference mFODIconPicker;
     private ListPreference mLockClockFonts;
     private ListPreference mLockDateFonts;
     private ListPreference mLockOwnerInfoFonts;
@@ -223,6 +225,12 @@ public class LockScreen extends SettingsPreferenceFragment implements
       mWeatherEnabled.setOnPreferenceChangeListener(this);
 
        setHasOptionsMenu(true);
+
+        mFODIconPicker = (Preference) findPreference(FOD_SETTINGS_CATEGORY);
+        if (mFODIconPicker != null
+                && !getResources().getBoolean(com.android.internal.R.bool.config_supportsInDisplayFingerprint)) {
+            prefScreen.removePreference(mFODIconPicker);
+        }
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {

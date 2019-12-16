@@ -314,4 +314,16 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="fod_settings"
+        android:title="@string/fod_title">
+
+        <Preference
+            android:key="fod_icon_picker_category"
+            android:title="@string/fod_icon_picker_title"
+            android:summary="@string/fod_icon_picker_summary"
+            android:fragment="com.tenx.settings.fragments.FODIconPickerFragment" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
