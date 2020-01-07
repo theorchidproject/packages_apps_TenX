@@ -18,4 +18,17 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/tenx_title" >
 
+    <PreferenceCategory
+        android:key="system_theming"
+        android:title="@string/color_title">
+
+        <com.tenx.support.colorpicker.ColorPickerPreference
+            android:key="accent_color"
+            android:title="@string/accent_color"
+            android:summary="@string/accent_summary"
+            android:defaultValue="0xffffff"
+            android:persistent="false" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
