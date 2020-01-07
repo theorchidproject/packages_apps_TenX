@@ -1144,4 +1144,7 @@
     <string name="color_title">Colors</string>
     <string name="accent_title">Accent picker</string>
 
+    <!-- RGB Gradient picker -->
+    <string name="gradient_title">Gradient picker</string>
+
 </resources>
