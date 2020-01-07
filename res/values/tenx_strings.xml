@@ -1140,4 +1140,8 @@
     <string name="dashboard_suggestions_title">Suggestion cards</string>
     <string name="dashboard_suggestions_summary">Show suggestion cards on the dashboard</string>
 
+    <!-- RGB Accent picker -->
+    <string name="color_title">Colors</string>
+    <string name="accent_title">Accent picker</string>
+
 </resources>

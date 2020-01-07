@@ -60,6 +60,7 @@ import com.android.settingslib.core.lifecycle.Lifecycle;
 
 import com.tenx.settings.ui.DeviceThemePreferenceController;
 import com.tenx.settings.ui.HeaderImagePreferenceController;
+import com.tenx.settings.ui.RGBAccentPickerPreferenceController;
 
 public class UserInterface extends DashboardFragment implements
         OnPreferenceChangeListener, Indexable {
@@ -96,6 +97,7 @@ public class UserInterface extends DashboardFragment implements
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
         controllers.add(new DeviceThemePreferenceController(context));
         controllers.add(new HeaderImagePreferenceController(context));
+        controllers.add(new RGBAccentPickerPreferenceController(context));
         controllers.add(new OverlayCategoryPreferenceController(context,
                 "android.theme.customization.font"));
         controllers.add(new OverlayCategoryPreferenceController(context,
