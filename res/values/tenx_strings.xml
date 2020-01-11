@@ -1094,5 +1094,7 @@
     <string name="style_enabled_summary">Custom header image is ON</string>
     <string name="style_disabled_summary">Custom header image is OFF</string>
     <string name="header_provider_disabled">Disabled</string>
+    <string name="height_title">Height</string>
+    <string name="status_bar_custom_header_height_title">Image height offset</string>
 
 </resources>
