@@ -18,10 +18,13 @@ package com.tenx.settings.fragments;
 
 import com.android.internal.logging.nano.MetricsProto;
 
+import static android.os.UserHandle.USER_SYSTEM;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.UiModeManager;
 import android.content.Context;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
@@ -36,6 +39,7 @@ import android.os.ServiceManager;
 import android.os.UserHandle;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
+import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreference;
@@ -44,8 +48,12 @@ import com.android.settings.R;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Objects;
 
+import com.android.internal.util.tenx.ThemesUtils;
+import com.android.internal.util.tenx.tenxUtils;
 import com.android.settings.SettingsPreferenceFragment;
+import com.tenx.support.preferences.SystemSettingListPreference;
 import com.tenx.support.colorpicker.ColorPickerPreference;
 
 public class UserInterface extends SettingsPreferenceFragment implements
@@ -55,20 +63,29 @@ public class UserInterface extends SettingsPreferenceFragment implements
     private static final String ACCENT_COLOR_PROP = "persist.sys.theme.accentcolor";
     private static final String GRADIENT_COLOR = "gradient_color";
     private static final String GRADIENT_COLOR_PROP = "persist.sys.theme.gradientcolor";
+    private static final String PREF_THEME_SWITCH = "theme_switch";
 
     private IOverlayManager mOverlayService;
+    private UiModeManager mUiModeManager;
+
     private ColorPickerPreference mThemeColor;
     private ColorPickerPreference mGradientColor;
+    private SystemSettingListPreference mThemeSwitch;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
         addPreferencesFromResource(R.xml.tenx_settings_ui);
+
+        mUiModeManager = getContext().getSystemService(UiModeManager.class);
+
         mOverlayService = IOverlayManager.Stub
                 .asInterface(ServiceManager.getService(Context.OVERLAY_SERVICE));
+
         setupAccentPref();
         setupGradientPref();
+        setupThemeSwitchPref();
     }
 
     @Override
@@ -87,6 +104,26 @@ public class UserInterface extends SettingsPreferenceFragment implements
             int color = (Integer) objValue;
             String hexColor = String.format("%08X", (0xFFFFFFFF & color));
             SystemProperties.set(GRADIENT_COLOR_PROP, hexColor);
+            try {
+                 mOverlayService.reloadAndroidAssets(UserHandle.USER_CURRENT);
+                 mOverlayService.reloadAssets("com.android.settings", UserHandle.USER_CURRENT);
+                 mOverlayService.reloadAssets("com.android.systemui", UserHandle.USER_CURRENT);
+             } catch (RemoteException ignored) {
+             }
+        } else if (preference == mThemeSwitch) {
+            String theme_switch = (String) objValue;
+            final Context context = getContext();
+            switch (theme_switch) {
+                case "1":
+                    handleBackgrounds(false, context, UiModeManager.MODE_NIGHT_NO, ThemesUtils.SOLARIZED_DARK);
+                    break;
+                case "2":
+                    handleBackgrounds(false, context, UiModeManager.MODE_NIGHT_YES, ThemesUtils.SOLARIZED_DARK);
+                    break;
+                case "3":
+                    handleBackgrounds(true, context, UiModeManager.MODE_NIGHT_YES, ThemesUtils.SOLARIZED_DARK);
+                    break;
+            }
             try {
                  mOverlayService.reloadAndroidAssets(UserHandle.USER_CURRENT);
                  mOverlayService.reloadAssets("com.android.settings", UserHandle.USER_CURRENT);
@@ -115,6 +152,33 @@ public class UserInterface extends SettingsPreferenceFragment implements
                 : Color.parseColor("#" + colorVal);
         mGradientColor.setNewPreviewColor(color);
         mGradientColor.setOnPreferenceChangeListener(this);
+    }
+
+    private void setupThemeSwitchPref() {
+        mThemeSwitch = (SystemSettingListPreference) findPreference(PREF_THEME_SWITCH);
+        mThemeSwitch.setOnPreferenceChangeListener(this);
+        if (tenxUtils.isThemeEnabled("com.android.theme.solarizeddark.system")) {
+            mThemeSwitch.setValue("3");
+        } else if (mUiModeManager.getNightMode() == UiModeManager.MODE_NIGHT_YES) {
+            mThemeSwitch.setValue("2");
+        } else {
+            mThemeSwitch.setValue("1");
+        }
+    }
+
+    private void handleBackgrounds(Boolean state, Context context, int mode, String[] overlays) {
+        if (context != null) {
+            Objects.requireNonNull(context.getSystemService(UiModeManager.class))
+                    .setNightMode(mode);
+        }
+        for (int i = 0; i < overlays.length; i++) {
+            String background = overlays[i];
+            try {
+                mOverlayService.setEnabled(background, state, USER_SYSTEM);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
