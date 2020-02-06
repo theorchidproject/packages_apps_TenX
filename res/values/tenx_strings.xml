@@ -381,6 +381,8 @@
     <!-- Lockscreen battery info indicator  -->
     <string name="lockscreen_battery_info_title">Lockscreen charging info</string>
     <string name="lockscreen_battery_info_summary">Display negociated charger max current and voltage and battery temperature on lockscreen while charging</string>
+    <string name="lockscreen_battery_info_font_title">Charging info font</string>
+    <string name="lockscreen_battery_info_dialog_title">Select charging info font</string>
 
     <!-- Double Tap Statusbar to Sleep -->
     <string name="statusbar_gesture_title">Gestures</string>

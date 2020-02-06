@@ -71,12 +71,14 @@ public class LockScreen extends SettingsPreferenceFragment implements
     private static final String LOCKSCREEN_WEATHER_ICON_COLOR = "lockscreen_weather_icon_color";
     private static final String LOCKSCREEN_WEATHER_ENABLED = "lockscreen_weather_enabled";
     private static final String FOD_SETTINGS_CATEGORY = "fod_settings";
+    private static final String KEY_CHARGE_INFO_FONT = "lockscreen_battery_info_font";
 
     private Preference mFODIconPicker;
     private ListPreference mLockClockFonts;
     private ListPreference mLockDateFonts;
     private ListPreference mLockOwnerInfoFonts;
     private ListPreference mTextClockFonts;
+    private ListPreference mChargingInfoFont;
     private CustomSeekBarPreference mClockFontSize;
     private CustomSeekBarPreference mDateFontSize;
     private CustomSeekBarPreference mOwnerInfoFontSize;
@@ -231,6 +233,12 @@ public class LockScreen extends SettingsPreferenceFragment implements
                 && !getResources().getBoolean(com.android.internal.R.bool.config_supportsInDisplayFingerprint)) {
             prefScreen.removePreference(mFODIconPicker);
         }
+
+        mChargingInfoFont = (ListPreference) findPreference(KEY_CHARGE_INFO_FONT);
+        mChargingInfoFont.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.LOCKSCREEN_BATTERY_INFO_FONT, 28)));
+        mChargingInfoFont.setSummary(mChargingInfoFont.getEntry());
+        mChargingInfoFont.setOnPreferenceChangeListener(this);
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -356,6 +364,13 @@ public class LockScreen extends SettingsPreferenceFragment implements
             boolean value = (Boolean) newValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.OMNI_LOCKSCREEN_WEATHER_ENABLED, value ? 1 : 0);
+            return true;
+        } else if (preference == mChargingInfoFont) {
+            int value = Integer.valueOf((String) newValue);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.LOCKSCREEN_BATTERY_INFO_FONT, value);
+            mChargingInfoFont.setValue(String.valueOf(value));
+            mChargingInfoFont.setSummary(mChargingInfoFont.getEntry());
             return true;
         }
         return false;
