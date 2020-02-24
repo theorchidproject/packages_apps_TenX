@@ -29,9 +29,20 @@
 
      <ListPreference
         android:key="network_traffic_type"
-        android:title="@string/network_traffic_arrow"
-        android:summary="@string/network_traffic_arrow_summary"
-        android:defaultValue="true" />
+        android:title="@string/network_traffic_type"
+        android:entries="@array/show_network_traffic_type_entries"
+        android:entryValues="@array/show_network_traffic_type_values"
+        android:defaultValue="0"
+        android:persistent="false" />
+
+    <com.tenx.support.preferences.SystemSettingListPreference
+        android:key="network_traffic_layout"
+        android:title="@string/network_traffic_layout"
+        android:entries="@array/network_traffic_layout_entries"
+        android:entryValues="@array/network_traffic_layout_values"
+        android:dependency="network_traffic_location"
+        android:summary="%s"
+        android:defaultValue="0" />
 
     <com.tenx.support.preferences.CustomSeekBarPreference
         android:key="network_traffic_autohide_threshold"
@@ -42,10 +53,9 @@
 
     <com.tenx.support.preferences.SystemSettingSwitchPreference
         android:key="network_traffic_arrow"
-        android:title="@string/network_traffic_hidearrow"
-        android:summary="@string/network_traffic_hidearrow_summary"
-        android:dependency="network_traffic_state"
-        android:defaultValue="false" />
+        android:title="@string/network_traffic_arrow"
+        android:summary="@string/network_traffic_arrow_summary"
+        android:defaultValue="true" />
 
     <com.tenx.support.preferences.CustomSeekBarPreference
         android:key="network_traffic_font_size"
