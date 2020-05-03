@@ -42,12 +42,6 @@
         settings:interval="1"
         ionionizer:units="dp" />
 
-    <com.tenx.support.preferences.SystemSettingSwitchPreference
-        android:key="battery_bar_animate"
-        android:title="@string/sb_battery_bar_animate_title"
-        android:summary="@string/sb_battery_bar_animate_summary"
-        android:defaultValue="false" />
-
     <com.tenx.support.colorpicker.ColorPickerPreference
         android:key="battery_bar_color"
         android:title="@string/sb_battery_bar_color"
@@ -86,4 +80,17 @@
         android:defaultValue="0xff99cc00"
         android:persistent="false" />
 
-</PreferenceScreen> 
+    <com.tenx.support.preferences.SystemSettingSwitchPreference
+        android:key="battery_bar_animate"
+        android:title="@string/sb_battery_bar_animate_title"
+        android:summary="@string/sb_battery_bar_animate_summary"
+        android:defaultValue="false" />
+
+    <com.tenx.support.colorpicker.ColorPickerPreference
+        android:key="battery_bar_animate_color"
+        android:title="@string/sb_battery_bar_animate_color"
+        android:defaultValue="0xffff2200"
+        android:dependency="battery_bar_animate"
+        android:persistent="false" />
+
+</PreferenceScreen>
