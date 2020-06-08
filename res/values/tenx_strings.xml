@@ -1134,4 +1134,10 @@
     <string name="realme_parts_title">Realme Parts</string>
     <string name="realme_parts_summary">Realme specific device parts</string>
 
+    <!-- Ambient music ticker location -->
+    <string name="ambient_music_location">Show ambient music ticker</string>
+    <string name="ambient_music_disabled">Disabled</string>
+    <string name="ambient_music_bottom">At the bottom (default)</string>
+    <string name="ambient_music_center">Centered (under the cLock)</string>
+
 </resources>
