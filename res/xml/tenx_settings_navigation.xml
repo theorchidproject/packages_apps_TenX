@@ -31,4 +31,10 @@
 
     </PreferenceCategory>
 
+    <Preference
+        android:key="pulse"
+        android:title="@string/pulse_settings"
+        android:summary="@string/pulse_settings_summary"
+        android:fragment="com.tenx.settings.fragments.PulseSettings" />
+
 </PreferenceScreen>
