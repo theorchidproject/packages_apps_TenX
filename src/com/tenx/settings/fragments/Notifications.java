@@ -29,6 +29,9 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.tenx.support.preferences.CustomSeekBarPreference;
+import com.tenx.support.preferences.SystemSettingListPreference;
+import com.tenx.support.preferences.SystemSettingSwitchPreference;
 import com.tenx.support.preferences.SystemSettingMasterSwitchPreference;
 import com.tenx.support.preferences.GlobalSettingMasterSwitchPreference;
 
@@ -41,8 +44,14 @@ public class Notifications extends SettingsPreferenceFragment
     private GlobalSettingMasterSwitchPreference mHeadsUpEnabled;
 
     private static final String AMBIENT_NOTIFICATION_LIGHT = "pulse_ambient_light";
+    private static final String PREF_FLASH_ON_CALL = "flashlight_on_call";
+    private static final String PREF_FLASH_ON_CALL_DND = "flashlight_on_call_ignore_dnd";
+    private static final String PREF_FLASH_ON_CALL_RATE = "flashlight_on_call_rate";
 
     private SystemSettingMasterSwitchPreference mEdgeLightEnabled;
+    private SystemSettingListPreference mFlashOnCall;
+    private SystemSettingSwitchPreference mFlashOnCallIgnoreDND;
+    private CustomSeekBarPreference mFlashOnCallRate;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,6 +72,24 @@ public class Notifications extends SettingsPreferenceFragment
         int headsUpEnabled = Settings.Global.getInt(getContentResolver(),
                 HEADS_UP_NOTIFICATIONS_ENABLED, 1);
         mHeadsUpEnabled.setChecked(headsUpEnabled != 0);
+
+        mFlashOnCallRate = (CustomSeekBarPreference)
+                findPreference(PREF_FLASH_ON_CALL_RATE);
+        int value = Settings.System.getInt(resolver,
+                Settings.System.FLASHLIGHT_ON_CALL_RATE, 1);
+        mFlashOnCallRate.setValue(value);
+        mFlashOnCallRate.setOnPreferenceChangeListener(this);
+
+        mFlashOnCallIgnoreDND = (SystemSettingSwitchPreference)
+                findPreference(PREF_FLASH_ON_CALL_DND);
+        value = Settings.System.getInt(resolver,
+                Settings.System.FLASHLIGHT_ON_CALL, 0);
+        mFlashOnCallIgnoreDND.setVisible(value > 1);
+        mFlashOnCallRate.setVisible(value != 0);
+
+        mFlashOnCall = (SystemSettingListPreference)
+                findPreference(PREF_FLASH_ON_CALL);
+        mFlashOnCall.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -81,6 +108,18 @@ public class Notifications extends SettingsPreferenceFragment
             boolean value = (Boolean) newValue;
             Settings.Global.putInt(getContentResolver(),
 		            HEADS_UP_NOTIFICATIONS_ENABLED, value ? 1 : 0);
+            return true;
+        } else if (preference == mFlashOnCall) {
+            int value = Integer.parseInt((String) newValue);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.FLASHLIGHT_ON_CALL, value);
+            mFlashOnCallIgnoreDND.setVisible(value > 1);
+            mFlashOnCallRate.setVisible(value != 0);
+            return true;
+        } else if (preference == mFlashOnCallRate) {
+            int value = (Integer) newValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.FLASHLIGHT_ON_CALL_RATE, value);
             return true;
         }
         return false;
