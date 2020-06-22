@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2020 Elegant UI
+<!--
+     Copyright (C) 2016-2019 crDroid Android Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -16,26 +17,21 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    android:title="@string/battery_title" >
+    android:title="@string/sensor_block_title">
 
-    <com.tenx.support.preferences.SystemSettingMasterSwitchPreference
-        android:key="smart_pixels_enable"
-        android:fragment="com.tenx.settings.fragments.SmartPixels"
-        android:title="@string/smart_pixels_title"
-        android:summary="@string/smart_pixels_summary"
-        android:defaultValue="false" />
-
-    <com.tenx.support.preferences.SystemSettingMasterSwitchPreference
-        android:key="screen_state_toggles_enable_key"
-        android:fragment="com.tenx.settings.fragments.ScreenStateToggles"
-        android:title="@string/screen_state_toggles_title"
-        android:summary="@string/screen_state_toggles_summary"
-        android:defaultValue="false" />
-
-    <Preference
-        android:key="sensor_block_settings"
+    <com.tenx.support.preferences.SystemSettingSwitchPreference
+        android:key="sensor_block"
         android:title="@string/sensor_block_title"
         android:summary="@string/sensor_block_summary"
-        android:fragment="com.tenx.settings.fragments.SensorBlock"/>
+        android:defaultValue="false" />
 
+    <PreferenceCategory
+        android:title="@string/sensor_block_app_picker_title"
+        android:dependency="sensor_block"
+        android:key="sensor_block_applications">
+        <Preference
+            android:key="add_sensor_block_packages"
+            android:icon="@drawable/ic_menu_add_white"
+            android:title="@string/add_sensor_block_package_title" />
+    </PreferenceCategory>
 </PreferenceScreen>
