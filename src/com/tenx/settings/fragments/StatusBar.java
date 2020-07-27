@@ -30,18 +30,37 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.tenx.support.preferences.SystemSettingMasterSwitchPreference;
+
 public class StatusBar extends SettingsPreferenceFragment implements
     Preference.OnPreferenceChangeListener {
+
+    private static final String NETWORK_TRAFFIC_STATE = "network_traffic_state";
+
+    private SystemSettingMasterSwitchPreference mNetworkTraffic;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.tenx_settings_statusbar);
         PreferenceScreen prefSet = getPreferenceScreen();
+        ContentResolver resolver = getActivity().getContentResolver();
+
+        mNetworkTraffic = (SystemSettingMasterSwitchPreference) findPreference(NETWORK_TRAFFIC_STATE);
+        mNetworkTraffic.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.NETWORK_TRAFFIC_STATE, 0) == 1));
+        mNetworkTraffic.setOnPreferenceChangeListener(this);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        ContentResolver resolver = getActivity().getContentResolver();
+        if (preference == mNetworkTraffic) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                   Settings.System.NETWORK_TRAFFIC_STATE, value ? 1 : 0);
+            return true;
+        }
         return false;
     }
 

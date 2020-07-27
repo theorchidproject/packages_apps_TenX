@@ -134,10 +134,6 @@ public class Traffic extends SettingsPreferenceFragment implements OnPreferenceC
                 // Convert the selected location mode from our list {0,1,2} and store it to "view location" setting: 0=sb; 1=expanded sb
                 Settings.System.putIntForUser(getActivity().getContentResolver(),
                         Settings.System.NETWORK_TRAFFIC_VIEW_LOCATION, location-1, UserHandle.USER_CURRENT);
-                // And also enable the net monitor
-                Settings.System.putIntForUser(getActivity().getContentResolver(),
-                        Settings.System.NETWORK_TRAFFIC_STATE, 1, UserHandle.USER_CURRENT);
-                updateTrafficLocation(location+1);
             } else { // Disable net monitor completely
                 Settings.System.putIntForUser(getActivity().getContentResolver(),
                         Settings.System.NETWORK_TRAFFIC_STATE, 0, UserHandle.USER_CURRENT);
@@ -176,12 +172,6 @@ public class Traffic extends SettingsPreferenceFragment implements OnPreferenceC
 
     public void updateTrafficLocation(int location) {
         switch(location){
-            case 0:
-                mThreshold.setEnabled(false);
-                mShowArrows.setEnabled(false);
-                mNetTrafficType.setEnabled(false);
-                mNetTrafficSize.setEnabled(false);
-                break;
             case 1:
             case 2:
                 mThreshold.setEnabled(true);

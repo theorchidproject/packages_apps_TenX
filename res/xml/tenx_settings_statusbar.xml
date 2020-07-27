@@ -39,8 +39,8 @@
                    android:targetClass="com.android.systemui.tuner.StatusbarItemsActivity" />
         </Preference>
 
-        <Preference
-            android:key="traffic"
+        <com.tenx.support.preferences.SystemSettingMasterSwitchPreference
+            android:key="network_traffic_state"
             android:title="@string/traffic_title" 
             android:summary="@string/traffic_summary"
             android:fragment="com.tenx.settings.fragments.Traffic" />
