@@ -1304,4 +1304,12 @@
     <string name="switch_retro">Retro</string>
     <string name="switch_telegram">Telegram</string>
 
+    <!-- UI styles -->
+    <string name="ui_styles_title">UI</string>
+    <string name="ui_style_default">Default</string>
+    <string name="ui_style_no_corner_radius">No Corner Radius</string>
+    <string name="ui_style_rectangle">Rectangle</string>
+    <string name="ui_style_round_large">Round Large</string>
+    <string name="ui_style_round_medium">Round Medium</string>
+
 </resources>
