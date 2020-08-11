@@ -377,6 +377,7 @@
     <string name="lock_item_center">Center Aligned</string>
     <string name="lock_item_right">Right Aligned</string>
     <string name="lockscreen_item_padding_title">Lockscreen Items Padding</string>
+    <string name="lockscreen_weather_alignment_title">LS Weather Alignment</string>
 
     <!-- QS BG Tint -->
     <string name="qs_bg_use_new_tint">Tint QS Tile</string>
