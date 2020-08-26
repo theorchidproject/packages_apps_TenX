@@ -19,4 +19,13 @@
     <!-- FOD icon picker-->
     <color name="fod_item_background_stroke_color">#d6d6d6</color>
 
+    <!-- Preview image -->
+    <dimen name="preview_imageview_marginHorizontal">4.5dp</dimen>
+    <dimen name="preview_imageview_marginVertical">20dp</dimen>
+    <dimen name="preview_imageview_width">15dp</dimen>
+    <dimen name="preview_layout_height">300dp</dimen>
+    <dimen name="preview_layout_width">150dp</dimen>
+    <dimen name="preview_paddingHorizontal">50dp</dimen>
+    <dimen name="preview_paddingVertical">30dp</dimen>
+
 </resources>

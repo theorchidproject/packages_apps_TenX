@@ -18,6 +18,10 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/battery_title" >
 
+    <com.tenx.settings.preferences.FragmentPreview
+        android:layout="@layout/battery_layout"
+        android:selectable="false"/>
+
     <com.tenx.support.preferences.SystemSettingMasterSwitchPreference
         android:key="smart_pixels_enable"
         android:fragment="com.tenx.settings.fragments.SmartPixels"
