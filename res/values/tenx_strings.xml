@@ -63,6 +63,7 @@
     <string name="powermenu_logout">Logout</string>
     <string name="powermenu_emergency">Emergency</string>
     <string name="powermenu_torch">Flashlight</string>
+    <string name="powermenu_onthego">On-The-Go</string>
 
     <!-- Powermenu columns -->
     <string name="powermenu_columns_title">Columns</string>

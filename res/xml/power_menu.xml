@@ -72,6 +72,11 @@
             android:defaultValue="false" />
 
          <com.tenx.support.preferences.SystemSettingSwitchPreference
+            android:key="global_actions_onthego"
+            android:title="@string/powermenu_onthego"
+            android:defaultValue="false" />
+
+         <com.tenx.support.preferences.SystemSettingSwitchPreference
             android:key="powermenu_logout"
             android:title="@string/powermenu_logout"
             android:defaultValue="false" />
