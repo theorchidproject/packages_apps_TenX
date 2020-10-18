@@ -25,10 +25,12 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.content.om.IOverlayManager;
 import android.content.om.OverlayInfo;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.SystemProperties;
@@ -71,10 +73,13 @@ public class UserInterface extends DashboardFragment implements
     private static final String ACCENT_COLOR_PROP = "persist.sys.theme.accentcolor";
     private static final String GRADIENT_COLOR = "gradient_color";
     private static final String GRADIENT_COLOR_PROP = "persist.sys.theme.gradientcolor";
+    private static final String FILE_QSPANEL_SELECT = "file_qspanel_select";
+    private static final int REQUEST_PICK_IMAGE = 0;
 
     private IOverlayManager mOverlayService;
     private ColorPickerPreference mThemeColor;
     private ColorPickerPreference mGradientColor;
+    private Preference mQsPanelImage;
 
     @Override
     protected String getLogTag() {
@@ -92,6 +97,7 @@ public class UserInterface extends DashboardFragment implements
 
         mOverlayService = IOverlayManager.Stub
                 .asInterface(ServiceManager.getService(Context.OVERLAY_SERVICE));
+        mQsPanelImage = findPreference(FILE_QSPANEL_SELECT);
         setupAccentPref();
         setupGradientPref();
     }
@@ -140,6 +146,17 @@ public class UserInterface extends DashboardFragment implements
         return true;
     }
 
+    @Override
+    public boolean onPreferenceTreeClick(Preference preference) {
+        if (preference == mQsPanelImage) {
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType("image/*");
+            startActivityForResult(intent, REQUEST_PICK_IMAGE);
+            return true;
+        }
+        return super.onPreferenceTreeClick(preference);
+    }
+
     private void setupAccentPref() {
         mThemeColor = (ColorPickerPreference) findPreference(ACCENT_COLOR);
         String colorVal = SystemProperties.get(ACCENT_COLOR_PROP, "-1");
@@ -158,6 +175,17 @@ public class UserInterface extends DashboardFragment implements
                 : Color.parseColor("#" + colorVal);
         mGradientColor.setNewPreviewColor(color);
         mGradientColor.setOnPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent result) {
+        if (requestCode == REQUEST_PICK_IMAGE) {
+            if (resultCode != Activity.RESULT_OK) {
+                return;
+            }
+            final Uri imageUri = result.getData();
+            Settings.System.putString(getContentResolver(), Settings.System.QS_PANEL_CUSTOM_IMAGE, imageUri.toString());
+        }
     }
 
     @Override
