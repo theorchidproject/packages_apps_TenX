@@ -582,4 +582,9 @@
     <string name="screenshot_options_category">Screenshot options</string>
     <string name="screenshot_options_summary">Customize screenshot attributes like time, delay,type etc</string>
 
+    <!-- QS Styles -->
+    <string name="style_title">Style</string>
+    <string name="qs_panel_alpha_title">Quick Settings opacity</string>
+    <string name="qs_panel_alpha_summary">Configure opacity of background</string>
+
 </resources>

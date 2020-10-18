@@ -38,10 +38,12 @@ public class QuickSettings extends SettingsPreferenceFragment
     private static final String PREF_COLUMNS_PORTRAIT = "qs_columns_portrait";
     private static final String PREF_COLUMNS_LANDSCAPE = "qs_columns_landscape";
     private static final String PREF_COLUMNS_QUICKBAR = "qs_quickbar_columns";
+    private static final String KEY_QS_PANEL_ALPHA = "qs_panel_alpha";
 
     private CustomSeekBarPreference mQsColumnsPortrait;
     private CustomSeekBarPreference mQsColumnsLandscape;
     private CustomSeekBarPreference mQsColumnsQuickbar;
+    private CustomSeekBarPreference mQsPanelAlpha;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,6 +69,12 @@ public class QuickSettings extends SettingsPreferenceFragment
                 Settings.System.QS_QUICKBAR_COLUMNS, 6);
         mQsColumnsQuickbar.setValue(columnsQuickbar);
         mQsColumnsQuickbar.setOnPreferenceChangeListener(this);
+
+        mQsPanelAlpha = (CustomSeekBarPreference) findPreference(KEY_QS_PANEL_ALPHA);
+        int qsPanelAlpha = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.QS_PANEL_BG_ALPHA, 255);
+        mQsPanelAlpha.setValue((int)(((double) qsPanelAlpha / 255) * 100));
+        mQsPanelAlpha.setOnPreferenceChangeListener(this);
    }
 
     @Override
@@ -86,6 +94,12 @@ public class QuickSettings extends SettingsPreferenceFragment
             int value = (Integer) newValue;
             Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.QS_QUICKBAR_COLUMNS, value, UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mQsPanelAlpha) {
+            int bgAlpha = (Integer) newValue;
+            int trueValue = (int) (((double) bgAlpha / 100) * 255);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.QS_PANEL_BG_ALPHA, trueValue);
             return true;
         }
         return false;
