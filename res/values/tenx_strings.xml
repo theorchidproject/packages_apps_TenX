@@ -464,5 +464,10 @@
     <string name="network_traffic_layout_h">Horizontal</string>
     <string name="network_traffic_layout_v">Vertical</string>
     <string name="net_traffic_font">Fonts</string>
+
+    <!-- Network traffic icon type -->
+    <string name="network_traffic_icon_type_title">Icon type</string>
+    <string name="icon_type_aosp">AOSP arrow</string>
+    <string name="icon_type_lineage">Lineage arrow</string>
        
 </resources>
