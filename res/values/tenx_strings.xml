@@ -999,4 +999,8 @@
     <string name="oos_notif_color_custom">Custom color</string>
     <string name="oos_color_custom">Custom</string>
 
+    <!-- QS DataUsage Toggle -->
+    <string name="qs_datausage_title">Show data usage in qs header</string>
+    <string name="qs_datausage_subtitle">Shows data usage in quick settings header of sim used for data</string>
+
 </resources>
