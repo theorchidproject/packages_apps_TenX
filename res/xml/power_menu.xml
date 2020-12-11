@@ -32,9 +32,9 @@
             android:defaultValue="true" />
 
          <com.tenx.support.preferences.SystemSettingSwitchPreference
-            android:key="powermenu_restart_recovery"
-            android:title="@string/powermenu_restart_recovery"
-            android:defaultValue="true" />
+            android:key="advanced_reboot"
+            android:title="@string/powermenu_advanced_reboot_title"
+            android:defaultValue="false" />
 
          <com.tenx.support.preferences.SystemSettingSwitchPreference
             android:key="powermenu_screenshot"
