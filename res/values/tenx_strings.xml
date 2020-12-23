@@ -1249,4 +1249,9 @@
     <string name="dual_row_datausage_monthly">Monthly usage</string>
     <string name="dual_row_datausage_daily">Daily usage</string>
 
+    <!-- Lockscreen notif count -->
+    <string name="lockscreen_maxnotif_title">Lockscreen notification count</string>
+    <string name="lockscreen_maxnotif_sumary">Enable adjustment of max lockscreen notifications</string>
+    <string name="lockscreen_maxnotif_config">Max lockscreen notifications</string>
+
 </resources>

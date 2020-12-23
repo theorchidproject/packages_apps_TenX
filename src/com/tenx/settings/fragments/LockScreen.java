@@ -72,6 +72,7 @@ public class LockScreen extends SettingsPreferenceFragment implements
     private static final String LOCKSCREEN_WEATHER_ENABLED = "lockscreen_weather_enabled";
     private static final String FOD_SETTINGS_CATEGORY = "fod_settings";
     private static final String KEY_CHARGE_INFO_FONT = "lockscreen_battery_info_font";
+    private static final String LOCKSCREEN_MAX_NOTIF_CONFIG = "lockscreen_max_notif_cofig";
 
     private Preference mFODIconPicker;
     private ListPreference mLockClockFonts;
@@ -83,6 +84,7 @@ public class LockScreen extends SettingsPreferenceFragment implements
     private CustomSeekBarPreference mDateFontSize;
     private CustomSeekBarPreference mOwnerInfoFontSize;
     private CustomSeekBarPreference mCustomTextClockFontSize;
+    private CustomSeekBarPreference mMaxKeyguardNotifConfig;
     private ColorPickerPreference mLockscreenPhoneColorPicker;
     private ColorPickerPreference mLockscreenCameraColorPicker;
     private ColorPickerPreference mLockscreenIndicationTextColorPicker;
@@ -239,6 +241,12 @@ public class LockScreen extends SettingsPreferenceFragment implements
                 getContentResolver(), Settings.System.LOCKSCREEN_BATTERY_INFO_FONT, 28)));
         mChargingInfoFont.setSummary(mChargingInfoFont.getEntry());
         mChargingInfoFont.setOnPreferenceChangeListener(this);
+
+        mMaxKeyguardNotifConfig = (CustomSeekBarPreference) findPreference(LOCKSCREEN_MAX_NOTIF_CONFIG);
+        int kgconf = Settings.System.getInt(getContentResolver(),
+                Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG, 3);
+        mMaxKeyguardNotifConfig.setValue(kgconf);
+        mMaxKeyguardNotifConfig.setOnPreferenceChangeListener(this);
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -371,6 +379,11 @@ public class LockScreen extends SettingsPreferenceFragment implements
                     Settings.System.LOCKSCREEN_BATTERY_INFO_FONT, value);
             mChargingInfoFont.setValue(String.valueOf(value));
             mChargingInfoFont.setSummary(mChargingInfoFont.getEntry());
+            return true;
+        } else if (preference == mMaxKeyguardNotifConfig) {
+            int kgconf = (Integer) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG, kgconf);
             return true;
         }
         return false;

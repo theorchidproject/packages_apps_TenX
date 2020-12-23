@@ -270,6 +270,20 @@
                    android:targetClass="com.android.systemui.tuner.LockscreenActivity" />
         </Preference>
 
+        <com.tenx.support.preferences.SystemSettingSwitchPreference
+            android:key="lock_screen_custom_notif"
+            android:title="@string/lockscreen_maxnotif_title"
+            android:summary="@string/lockscreen_maxnotif_sumary"
+            android:defaultValue="false" />
+
+        <com.tenx.support.preferences.CustomSeekBarPreference
+            android:key="lockscreen_max_notif_cofig"
+            android:title="@string/lockscreen_maxnotif_config"
+            android:max="6"
+            settings:min="1"
+            android:persistent="false"
+            android:dependency="lock_screen_custom_notif" />
+
         <com.tenx.support.preferences.SystemSettingMasterSwitchPreference
             android:key="lockscreen_weather_enabled"
             android:title="@string/weather_title"
