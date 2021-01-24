@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2020 The TenX-OS Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Elegance -->
+    <string name="tenx_settings_title">Ten-X</string>
+
+    <!-- Categories -->
+    <string name="tenx_title">User Interface</string>
+    <string name="tenx_summary">Xtend my UI</string>
+    <string name="animations_title">Animations</string>
+    <string name="animations_summary">Xtend my system animations</string>
+    <string name="buttons_title">Buttons</string>
+    <string name="buttons_summary">Xtend you hardware buttons</string>
+    <string name="gestures_title">Gestures</string>
+    <string name="gestures_summary">Xtend my system gestures</string>
+    <string name="lockscreen_title">Lock Screen</string>
+    <string name="lockscreen_summary">Xtend my lockscreen</string>
+    <string name="misc_title">Miscellaneous</string>
+    <string name="misc_summary">Xtend my misc settings</string>
+    <string name="navigation_title">Navigation</string>
+    <string name="navigation_summary">Xtend your navigation bar</string>
+    <string name="notifications_title">Notifications</string>
+    <string name="notifications_summary">Xtend my notification space</string>
+    <string name="quicksettings_title">Quick Settings</string>
+    <string name="quicksettings_summary">Xtend my quick settings layout</string>
+    <string name="statusbar_title">Status Bar</string>
+    <string name="statusbar_summary">Xtend my statusbar</string>
+    <string name="battery_title">Battery</string>
+    <string name="battery_saving_summary">Xtend my battery health</string>
+    <string name="ambient_display_custom_title">Ambient Display</string>
+    <string name="ambient_display_custom_summary">Xtend my ambient display</string>
+    <string name="system_settings_title">System</string>
+    <string name="system_settings_summary">Xtend my system settings</string>
+
+</resources>
