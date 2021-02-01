@@ -64,4 +64,8 @@
     <string name="powermenu_emergency">Emergency</string>
     <string name="powermenu_torch">Flashlight</string>
 
+    <!-- Powermenu columns -->
+    <string name="powermenu_columns_title">Columns</string>
+    <string name="powermenu_columns_summary">Configure the columns</string>
+
 </resources>

@@ -76,6 +76,14 @@
             android:title="@string/powermenu_logout"
             android:defaultValue="false" />
 
+         <com.tenx.support.preferences.SystemSettingSeekBarPreference
+            android:key="powermenu_columns"
+            android:title="@string/powermenu_columns_title"
+            android:summary="@string/powermenu_columns_summary"
+            android:max="10"
+            android:min="1"
+            android:defaultValue="3"/>
+
     </PreferenceCategory>
 
 </PreferenceScreen>
