@@ -17,8 +17,10 @@ package com.tenx.settings.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.os.SystemProperties;
 import android.provider.Settings;
 import androidx.preference.*;
@@ -28,19 +30,49 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.tenx.support.preferences.SystemSettingSwitchPreference;
+
 public class System extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
     public static final String TAG = "System";
 
+    private static final String SHOW_CPU_INFO_KEY = "show_cpu_info";
+
+    private SystemSettingSwitchPreference mShowCpuInfo;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.tenx_settings_system);
+
+        ContentResolver resolver = getActivity().getContentResolver();
+
+        mShowCpuInfo = (SystemSettingSwitchPreference) findPreference(SHOW_CPU_INFO_KEY);
+        mShowCpuInfo.setChecked(Settings.Global.getInt(getActivity().getContentResolver(),
+                Settings.Global.SHOW_CPU_OVERLAY, 0) == 1);
+        mShowCpuInfo.setOnPreferenceChangeListener(this);
+    }
+
+    private void writeCpuInfoOptions(boolean value) {
+        Settings.Global.putInt(getActivity().getContentResolver(),
+                Settings.Global.SHOW_CPU_OVERLAY, value ? 1 : 0);
+        Intent service = (new Intent())
+                .setClassName("com.android.systemui", "com.android.systemui.CPUInfoService");
+        if (value) {
+            getActivity().startService(service);
+        } else {
+            getActivity().stopService(service);
+        }
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        ContentResolver resolver = getActivity().getContentResolver();
+        if (preference == mShowCpuInfo) {
+            writeCpuInfoOptions((Boolean) newValue);
+            return true;
+        }
         return false;
     }
 

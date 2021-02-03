@@ -143,4 +143,9 @@
     <string name="reset_message">Reset all entries to default?</string>
     <string name="attention">Attention</string>
 
+    <!-- CPU info Toggle -->
+    <string name="cpu_title">CPU</string>
+    <string name="show_cpu_info_title">Show CPU info</string>
+    <string name="show_cpu_info_summary">Screen overlay showing current CPU info</string>
+
 </resources>
