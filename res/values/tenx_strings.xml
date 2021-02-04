@@ -385,8 +385,14 @@
     <string name="lockscreen_date_selection_str_border_accent">Dark with accented borders</string>
     <string name="lockscreen_date_selection_str_border_gradient">Dark with gradient borders</string>
 
-    <!-- Q To X Clock -->
-    <string name="center_text_clock_title">Center Text Clock</string>
-    <string name="center_text_clock_summary">Tranform Q-Clock to X-Clock</string>
+    <!-- Lockscreen item's alignment -->
+    <string name="lockscreen_item_alignment_title">Alignment</string>
+    <string name="center_text_clock_title">Text Clock Alignment</string>
+    <string name="lockscreen_date_alignment_title">Date Alignment</string>
+    <string name="lockscreen_ownerinfo_alignment_title">OwnerInfo Alignment</string>
+    <string name="lock_item_left">Left Aligned</string>
+    <string name="lock_item_center">Center Aligned</string>
+    <string name="lock_item_right">Right Aligned</string>
+    <string name="lockscreen_item_padding_title">Lockscreen Items Padding</string>
 
 </resources>
