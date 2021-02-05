@@ -37,7 +37,7 @@ public class System extends SettingsPreferenceFragment
 
     public static final String TAG = "System";
 
-    private static final String SHOW_CPU_INFO_KEY = "show_cpu_info";
+    private static final String SHOW_CPU_INFO_KEY = "show_cpu_overlay";
 
     private SystemSettingSwitchPreference mShowCpuInfo;
 
