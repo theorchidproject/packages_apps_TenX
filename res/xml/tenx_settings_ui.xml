@@ -41,6 +41,13 @@
     <PreferenceCategory
         android:title="@string/aosp_theming_title">
 
+        <com.tenx.support.preferences.SystemSettingListPreference
+            android:key="system_theme_style"
+            android:title="@string/theme_type_title"
+            android:persistent="false"
+            android:entries="@array/theme_type_titles"
+            android:entryValues="@array/theme_type_values" />
+
         <ListPreference
             android:key="android.theme.customization.font"
             android:title="@string/theme_customization_font_title"/>

@@ -60,6 +60,8 @@ import com.android.settingslib.core.lifecycle.Lifecycle;
 
 import com.tenx.support.colorpicker.ColorPickerPreference;
 
+import com.tenx.settings.ui.DeviceThemePreferenceController;
+
 public class UserInterface extends DashboardFragment implements
         OnPreferenceChangeListener, Indexable {
 
@@ -102,6 +104,7 @@ public class UserInterface extends DashboardFragment implements
     private static List<AbstractPreferenceController> buildPreferenceControllers(
             Context context, Lifecycle lifecycle, Fragment fragment) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
+        controllers.add(new DeviceThemePreferenceController(context));
         controllers.add(new OverlayCategoryPreferenceController(context,
                 "android.theme.customization.font"));
         controllers.add(new OverlayCategoryPreferenceController(context,
