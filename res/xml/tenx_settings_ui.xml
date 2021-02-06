@@ -39,6 +39,19 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:title="@string/aosp_theming_title">
+
+        <ListPreference
+            android:key="android.theme.customization.font"
+            android:title="@string/theme_customization_font_title"/>
+
+        <ListPreference
+            android:key="android.theme.customization.adaptive_icon_shape"
+            android:title="@string/theme_customization_icon_shape_title"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/qs_style_title">
 
         <com.tenx.support.preferences.SystemSettingListPreference

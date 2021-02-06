@@ -425,5 +425,8 @@
     <!-- Navbar tuner -->
     <string name="tuner_navbar_title">Tuner</string>
     <string name="navbar_tuner_title">Navbar Tuner</string>
+
+    <!-- AOSP Theming -->
+    <string name="aosp_theming_title">Theming</string>
        
 </resources>
