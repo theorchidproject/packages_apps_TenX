@@ -31,7 +31,7 @@
 
         <com.tenx.support.colorpicker.ColorPickerPreference
             android:key="gradient_color"
-            android:title="@string/accent_color"
+            android:title="@string/gradient_color"
             android:summary="@string/accent_summary"
             android:defaultValue="0xffffff"
             android:persistent="false" />
