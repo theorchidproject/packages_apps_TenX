@@ -45,6 +45,11 @@
             android:summary="@string/traffic_summary"
             android:fragment="com.tenx.settings.fragments.Traffic" />
 
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/battery_style_title">
+
         <com.tenx.support.preferences.SystemSettingListPreference
             android:key="status_bar_battery_style"
             android:title="@string/status_bar_battery_style_title"
