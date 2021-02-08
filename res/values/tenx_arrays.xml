@@ -530,6 +530,7 @@
         <item>@string/status_bar_battery_style_q</item>
         <item>@string/status_bar_battery_style_dotted_circle</item>
         <item>@string/status_bar_battery_style_circle</item>
+        <item>@string/status_bar_battery_style_simple_circle</item>
         <item>@string/status_bar_battery_style_hidden</item>
     </string-array>
 
@@ -537,6 +538,7 @@
         <item>0</item>
         <item>1</item>
         <item>2</item>
+        <item>4</item>
         <item>3</item>
     </string-array>
 	

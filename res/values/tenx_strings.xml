@@ -479,6 +479,7 @@
     <string name="status_bar_battery_style_q">Icon portrait (default)</string>
     <string name="status_bar_battery_style_dotted_circle">Dotted circle</string>
     <string name="status_bar_battery_style_circle">Filled circle</string>
+    <string name="status_bar_battery_style_simple_circle">Circle</string>
     <string name="status_bar_battery_style_text">Icon hidden</string>
     <string name="status_bar_battery_style_hidden">Icon hidden(Text only)</string>
 
