@@ -521,4 +521,8 @@
     <string name="data_disabled_icon_title">Data disabled icon</string>
     <string name="data_disabled_icon_summary">Display a cross sign next to signal bar when data is disabled</string>
 
+    <!-- Lockscreen powermenu -->
+    <string name="lockscreen_power_menu_title">Disable power menu </string>
+    <string name="lockscreen_power_menu_summary">This will only disable the power menu on secure lock screens</string>
+
 </resources>
