@@ -32,6 +32,7 @@ import com.android.settings.SettingsPreferenceFragment;
 
 import com.tenx.support.preferences.CustomSeekBarPreference;
 import com.tenx.support.preferences.SystemSettingEditTextPreference;
+import com.tenx.support.preferences.SystemSettingListPreference;
 
 public class QuickSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
@@ -41,12 +42,14 @@ public class QuickSettings extends SettingsPreferenceFragment
     private static final String PREF_COLUMNS_QUICKBAR = "qs_quickbar_columns";
     private static final String KEY_QS_PANEL_ALPHA = "qs_panel_alpha";
     private static final String TENX_FOOTER_TEXT_STRING = "tenx_footer_text_string";
+    private static final String TENX_FOOTER_TEXT_FONT = "tenx_footer_text_font";
 
     private CustomSeekBarPreference mQsColumnsPortrait;
     private CustomSeekBarPreference mQsColumnsLandscape;
     private CustomSeekBarPreference mQsColumnsQuickbar;
     private CustomSeekBarPreference mQsPanelAlpha;
     private SystemSettingEditTextPreference mFooterString;
+    private SystemSettingListPreference mQsFooterTextFont;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -90,6 +93,12 @@ public class QuickSettings extends SettingsPreferenceFragment
             Settings.System.putString(getActivity().getContentResolver(),
                     Settings.System.TENX_FOOTER_TEXT_STRING, "Ten-X");
         }
+
+        mQsFooterTextFont = (SystemSettingListPreference) findPreference(TENX_FOOTER_TEXT_FONT);
+        mQsFooterTextFont.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.TENX_FOOTER_TEXT_FONT, 28)));
+        mQsFooterTextFont.setSummary(mQsFooterTextFont.getEntry());
+        mQsFooterTextFont.setOnPreferenceChangeListener(this);
    }
 
     @Override
@@ -125,6 +134,13 @@ public class QuickSettings extends SettingsPreferenceFragment
                 Settings.System.putString(getActivity().getContentResolver(),
                         Settings.System.TENX_FOOTER_TEXT_STRING, "Ten-X");
             }
+            return true;
+        } else if (preference == mQsFooterTextFont) {
+            int value = Integer.valueOf((String) newValue);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.TENX_FOOTER_TEXT_FONT, value);
+            mQsFooterTextFont.setValue(String.valueOf(value));
+            mQsFooterTextFont.setSummary(mQsFooterTextFont.getEntry());
             return true;
         }
         return false;
