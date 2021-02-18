@@ -124,6 +124,7 @@ public class QuickSettings extends SettingsPreferenceFragment
             int trueValue = (int) (((double) bgAlpha / 100) * 255);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.QS_PANEL_BG_ALPHA, trueValue);
+            return true;
         } else if (preference == mFooterString) {
             String value = (String) newValue;
             if (value != "" && value != null)
