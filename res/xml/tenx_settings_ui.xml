@@ -72,7 +72,7 @@
             android:entries="@array/qs_tint_entries"
             android:entryValues="@array/qs_tint_values"
             android:summary="%s"
-            android:defaultValue="1" />
+            android:defaultValue="0" />
 
         <com.tenx.support.preferences.SystemSettingListPreference
             android:key="qs_label_use_new_tint"
@@ -81,7 +81,7 @@
             android:entries="@array/qs__label_tint_entries"
             android:entryValues="@array/qs_label_tint_values"
             android:summary="%s"
-            android:defaultValue="1" />
+            android:defaultValue="0" />
 
        <com.tenx.support.preferences.SystemSettingSwitchPreference
            android:key="qs_panel_type_background"
