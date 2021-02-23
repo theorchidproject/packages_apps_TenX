@@ -49,14 +49,14 @@ public class System extends SettingsPreferenceFragment
         ContentResolver resolver = getActivity().getContentResolver();
 
         mShowCpuInfo = (SystemSettingSwitchPreference) findPreference(SHOW_CPU_INFO_KEY);
-        mShowCpuInfo.setChecked(Settings.Global.getInt(getActivity().getContentResolver(),
-                Settings.Global.SHOW_CPU_OVERLAY, 0) == 1);
+        mShowCpuInfo.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.SHOW_CPU_OVERLAY, 0) == 1);
         mShowCpuInfo.setOnPreferenceChangeListener(this);
     }
 
     private void writeCpuInfoOptions(boolean value) {
-        Settings.Global.putInt(getActivity().getContentResolver(),
-                Settings.Global.SHOW_CPU_OVERLAY, value ? 1 : 0);
+        Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.SHOW_CPU_OVERLAY, value ? 1 : 0);
         Intent service = (new Intent())
                 .setClassName("com.android.systemui", "com.android.systemui.CPUInfoService");
         if (value) {
