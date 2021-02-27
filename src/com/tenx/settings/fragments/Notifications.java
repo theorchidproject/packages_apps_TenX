@@ -28,10 +28,16 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.tenx.support.preferences.SystemSettingMasterSwitchPreference;
+
 public class Notifications extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
     public static final String TAG = "Notifications";
+
+    private static final String AMBIENT_NOTIFICATION_LIGHT = "pulse_ambient_light";
+
+    private SystemSettingMasterSwitchPreference mEdgeLightEnabled;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,10 +45,22 @@ public class Notifications extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.tenx_settings_notifications);
         PreferenceScreen prefScreen = getPreferenceScreen();
         final Resources res = getResources();
+
+        mEdgeLightEnabled = (SystemSettingMasterSwitchPreference) findPreference(AMBIENT_NOTIFICATION_LIGHT);
+        mEdgeLightEnabled.setOnPreferenceChangeListener(this);
+        int edgeLightEnabled = Settings.System.getInt(getContentResolver(),
+                AMBIENT_NOTIFICATION_LIGHT, 0);
+        mEdgeLightEnabled.setChecked(edgeLightEnabled != 0);
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mEdgeLightEnabled) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getContentResolver(),
+                    AMBIENT_NOTIFICATION_LIGHT, value ? 1 : 0);
+            return true;
+        }
         return false;
     }
 
