@@ -32,10 +32,11 @@
         android:summary="@string/screen_state_toggles_summary"
         android:defaultValue="false" />
 
-    <Preference
+    <com.tenx.support.preferences.SystemSettingMasterSwitchPreference
         android:key="sensor_block_settings"
+        android:fragment="com.tenx.settings.fragments.SensorBlock"
         android:title="@string/sensor_block_title"
         android:summary="@string/sensor_block_summary"
-        android:fragment="com.tenx.settings.fragments.SensorBlock"/>
+        android:defaultValue="false" />
 
 </PreferenceScreen>

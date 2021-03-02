@@ -38,9 +38,11 @@ public class Battery extends SettingsPreferenceFragment implements
 
     private static final String SMART_PIXELS_ENABLED = "smart_pixels_enable";
     private static final String SCREEN_STATE_TOGGLES_ENABLE = "screen_state_toggles_enable_key";
+    private static final String SENSOR_BLOCK = "sensor_block";
 
     private SystemSettingMasterSwitchPreference mSmartPixelsEnabled;
     private SystemSettingMasterSwitchPreference mEnableScreenStateToggles;
+    private SystemSettingMasterSwitchPreference mSensorBlockEnabled;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,12 @@ public class Battery extends SettingsPreferenceFragment implements
                 Settings.System.START_SCREEN_STATE_SERVICE, 0, UserHandle.USER_CURRENT);
         mEnableScreenStateToggles.setChecked(enabled != 0);
         mEnableScreenStateToggles.setOnPreferenceChangeListener(this);
+
+        mSensorBlockEnabled = (SystemSettingMasterSwitchPreference) findPreference(SENSOR_BLOCK);
+        int sensorBlockEnabled = Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.SENSOR_BLOCK, 0, UserHandle.USER_CURRENT);
+        mSensorBlockEnabled.setChecked(sensorBlockEnabled != 0);
+        mSensorBlockEnabled.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -83,6 +91,11 @@ public class Battery extends SettingsPreferenceFragment implements
             } else {
                 getActivity().stopService(service);
             }
+            return true;
+        } else if (preference == mSensorBlockEnabled) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putIntForUser(getContentResolver(),
+		            SENSOR_BLOCK, value ? 1 : 0, UserHandle.USER_CURRENT);
             return true;
         }
         return false;
