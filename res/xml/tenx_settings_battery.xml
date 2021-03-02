@@ -33,7 +33,7 @@
         android:defaultValue="false" />
 
     <com.tenx.support.preferences.SystemSettingMasterSwitchPreference
-        android:key="sensor_block_settings"
+        android:key="sensor_block"
         android:fragment="com.tenx.settings.fragments.SensorBlock"
         android:title="@string/sensor_block_title"
         android:summary="@string/sensor_block_summary"
