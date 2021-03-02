@@ -51,7 +51,6 @@ public class PulseSettings extends SettingsPreferenceFragment implements
 
     private static final String TAG = PulseSettings.class.getSimpleName();
 
-    private static final String NAVBAR_PULSE_ENABLED_KEY = "navbar_pulse_enabled";
     private static final String LOCKSCREEN_PULSE_ENABLED_KEY = "lockscreen_pulse_enabled";
     private static final String AMBIENT_PULSE_ENABLED_KEY = "ambient_pulse_enabled";
     private static final String PULSE_SMOOTHING_KEY = "pulse_smoothing_enabled";
@@ -68,7 +67,6 @@ public class PulseSettings extends SettingsPreferenceFragment implements
     private static final int COLOR_TYPE_LAVALAMP = 2;
     private static final int COLOR_TYPE_AUTO = 3;
 
-    private SwitchPreference mNavbarPulse;
     private SwitchPreference mLockscreenPulse;
     private SwitchPreference mAmbientPulse;
     private SwitchPreference mPulseSmoothing;
@@ -86,12 +84,6 @@ public class PulseSettings extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.pulse_settings);
 
         ContentResolver resolver = getContext().getContentResolver();
-
-        mNavbarPulse = (SwitchPreference) findPreference(NAVBAR_PULSE_ENABLED_KEY);
-        boolean navbarPulse = Settings.Secure.getIntForUser(resolver,
-                Settings.Secure.NAVBAR_PULSE_ENABLED, 0, UserHandle.USER_CURRENT) != 0;
-        mNavbarPulse.setChecked(navbarPulse);
-        mNavbarPulse.setOnPreferenceChangeListener(this);
 
         mLockscreenPulse = (SwitchPreference) findPreference(LOCKSCREEN_PULSE_ENABLED_KEY);
         boolean lockscreenPulse = Settings.Secure.getIntForUser(resolver,
@@ -129,13 +121,7 @@ public class PulseSettings extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getContext().getContentResolver();
-        if (preference == mNavbarPulse) {
-            boolean val = (Boolean) newValue;
-            Settings.Secure.putIntForUser(resolver,
-                Settings.Secure.NAVBAR_PULSE_ENABLED, val ? 1 : 0, UserHandle.USER_CURRENT);
-            updateAllPrefs();
-            return true;
-        } else if (preference == mLockscreenPulse) {
+        if (preference == mLockscreenPulse) {
             boolean val = (Boolean) newValue;
             Settings.Secure.putIntForUser(resolver,
                 Settings.Secure.LOCKSCREEN_PULSE_ENABLED, val ? 1 : 0, UserHandle.USER_CURRENT);

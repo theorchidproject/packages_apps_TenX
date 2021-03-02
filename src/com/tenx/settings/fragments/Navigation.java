@@ -16,9 +16,11 @@
 package com.tenx.settings.fragments;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.os.SystemProperties;
 import android.provider.Settings;
 import androidx.preference.*;
@@ -28,19 +30,38 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.tenx.support.preferences.SecureSettingMasterSwitchPreference;
+
 public class Navigation extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
     public static final String TAG = "Navigation";
 
+    private static final String NAV_BAR_PULSE = "navbar_pulse_enabled";
+
+    private SecureSettingMasterSwitchPreference mNavbarPulse;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.tenx_settings_navigation);
+        ContentResolver resolver = getActivity().getContentResolver();
+
+        mNavbarPulse = (SecureSettingMasterSwitchPreference) findPreference(NAV_BAR_PULSE);
+        mNavbarPulse.setChecked((Settings.System.getInt(resolver,
+                Settings.Secure.NAVBAR_PULSE_ENABLED, 1) == 1));
+        mNavbarPulse.setOnPreferenceChangeListener(this);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        ContentResolver resolver = getActivity().getContentResolver();
+        if (preference == mNavbarPulse) {
+            boolean value = (Boolean) newValue;
+            Settings.Secure.putInt(getActivity().getContentResolver(),
+                    Settings.Secure.NAVBAR_PULSE_ENABLED, value ? 1 : 0);
+            return true;
+        }
         return false;
     }
 

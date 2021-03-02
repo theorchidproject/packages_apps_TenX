@@ -31,10 +31,16 @@
 
     </PreferenceCategory>
 
-    <Preference
-        android:key="pulse"
-        android:title="@string/pulse_settings"
-        android:summary="@string/pulse_settings_summary"
-        android:fragment="com.tenx.settings.fragments.PulseSettings" />
+    <PreferenceCategory
+        android:title="@string/pulse_settings">
+
+        <com.tenx.support.preferences.SecureSettingMasterSwitchPreference
+            android:key="navbar_pulse_enabled"
+            android:fragment="com.tenx.settings.fragments.PulseSettings"
+            android:title="@string/pulse_settings"
+            android:summary="@string/pulse_settings_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
