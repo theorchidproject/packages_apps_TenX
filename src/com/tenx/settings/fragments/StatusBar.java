@@ -38,10 +38,12 @@ public class StatusBar extends SettingsPreferenceFragment implements
     private static final String NETWORK_TRAFFIC_STATE = "network_traffic_state";
     private static final String STATUS_BAR_LOGO = "status_bar_logo";
     private static final String CARRIER_LABEL = "carrier_label_enabled";
+    private static final String STATUS_BAR_CLOCK = "status_bar_clock";
 
     private SystemSettingMasterSwitchPreference mNetworkTraffic;
     private SystemSettingMasterSwitchPreference mStatusBarLogo;
     private SystemSettingMasterSwitchPreference mCarrierLabel;
+    private SystemSettingMasterSwitchPreference mStatusBarClockShow;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -64,6 +66,11 @@ public class StatusBar extends SettingsPreferenceFragment implements
         mCarrierLabel.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.CARRIER_LABEL_ENABLED, 1) == 1));
         mCarrierLabel.setOnPreferenceChangeListener(this);
+
+        mStatusBarClockShow = (SystemSettingMasterSwitchPreference) findPreference(STATUS_BAR_CLOCK);
+        mStatusBarClockShow.setChecked((Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_CLOCK, 1) == 1));
+        mStatusBarClockShow.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -83,6 +90,11 @@ public class StatusBar extends SettingsPreferenceFragment implements
             boolean value = (Boolean) newValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.CARRIER_LABEL_ENABLED, value ? 1 : 0);
+            return true;
+        } else if (preference == mStatusBarClockShow) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_CLOCK, value ? 1 : 0);
             return true;
         }
         return false;

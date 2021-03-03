@@ -22,31 +22,23 @@
     <PreferenceCategory
         android:title="@string/statusbar_clock_title">
 
-        <com.tenx.support.preferences.SystemSettingSwitchPreference
-            android:key="status_bar_clock"
-            android:title="@string/status_bar_clock_show"
-            android:defaultValue="true" />
-
         <ListPreference
             android:key="statusbar_clock_style"
             android:title="@string/status_bar_clock_style_title"
             android:dialogTitle="@string/status_bar_clock_style_title"
             android:entries="@array/status_bar_clock_style_entries"
-            android:entryValues="@array/status_bar_clock_style_values"
-            android:dependency="status_bar_clock" />
+            android:entryValues="@array/status_bar_clock_style_values" />
 
         <ListPreference
             android:key="status_bar_am_pm"
             android:title="@string/status_bar_am_pm_title"
             android:dialogTitle="@string/status_bar_am_pm_title"
             android:entries="@array/status_bar_am_pm_entries"
-            android:entryValues="@array/status_bar_am_pm_values"
-            android:dependency="status_bar_clock" />
+            android:entryValues="@array/status_bar_am_pm_values" />
 
         <com.tenx.support.preferences.SystemSettingSwitchPreference
             android:key="status_bar_clock_seconds"
             android:title="@string/clock_seconds_display"
-            android:dependency="status_bar_clock"
             android:defaultValue="false" />
 
         <com.tenx.support.preferences.CustomSeekBarPreference
@@ -81,8 +73,7 @@
             android:title="@string/clock_date_display"
             android:summary="@string/clock_date_display_summary"
             android:entries="@array/clock_date_display_entries"
-            android:entryValues="@array/clock_date_display_values"
-            android:dependency="status_bar_clock" />
+            android:entryValues="@array/clock_date_display_values" />
 
         <ListPreference
             android:key="statusbar_clock_date_position"
