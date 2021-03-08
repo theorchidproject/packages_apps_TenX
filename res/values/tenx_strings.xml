@@ -369,6 +369,7 @@
     <string name="qs_tint_off">Tint Off</string>
     <string name="qs_tint_random">Random Color</string>
     <string name="qs_tint_accent">Accent Color</string>
+    <string name="qs_tint_oos">OxygenOS 11</string>
 
     <!-- QS Label Tint -->
     <string name="qs_style_title">QS</string>
