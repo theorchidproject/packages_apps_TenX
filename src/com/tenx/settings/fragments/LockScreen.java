@@ -37,6 +37,7 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.tenx.support.preferences.SystemSettingMasterSwitchPreference;
 import com.tenx.support.preferences.CustomSeekBarPreference;
 import com.tenx.support.colorpicker.ColorPickerPreference;
 
@@ -68,6 +69,7 @@ public class LockScreen extends SettingsPreferenceFragment implements
     private static final String LOCKSCREEN_WEATHER_TEMP_COLOR = "lockscreen_weather_temp_color";
     private static final String LOCKSCREEN_WEATHER_CITY_COLOR = "lockscreen_weather_city_color";
     private static final String LOCKSCREEN_WEATHER_ICON_COLOR = "lockscreen_weather_icon_color";
+    private static final String LOCKSCREEN_WEATHER_ENABLED = "lockscreen_weather_enabled";
 
     private ListPreference mLockClockFonts;
     private ListPreference mLockDateFonts;
@@ -86,6 +88,7 @@ public class LockScreen extends SettingsPreferenceFragment implements
     private ColorPickerPreference mWeatherRightTextColorPicker;
     private ColorPickerPreference mWeatherLeftTextColorPicker;
     private ColorPickerPreference mWeatherIconColorPicker;
+    private SystemSettingMasterSwitchPreference mWeatherEnabled;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -214,6 +217,11 @@ public class LockScreen extends SettingsPreferenceFragment implements
        mWeatherIconColorPicker.setSummary(hexColor);
        mWeatherIconColorPicker.setNewPreviewColor(intColor);
 
+      mWeatherEnabled = (SystemSettingMasterSwitchPreference) findPreference(LOCKSCREEN_WEATHER_ENABLED);
+      mWeatherEnabled.setChecked((Settings.System.getInt(resolver,
+              Settings.System.OMNI_LOCKSCREEN_WEATHER_ENABLED, 0) == 1));
+      mWeatherEnabled.setOnPreferenceChangeListener(this);
+
        setHasOptionsMenu(true);
     }
 
@@ -335,6 +343,11 @@ public class LockScreen extends SettingsPreferenceFragment implements
             int intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.LOCK_SCREEN_WEATHER_ICON_COLOR, intHex);
+            return true;
+        } else if (preference == mWeatherEnabled) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.OMNI_LOCKSCREEN_WEATHER_ENABLED, value ? 1 : 0);
             return true;
         }
         return false;

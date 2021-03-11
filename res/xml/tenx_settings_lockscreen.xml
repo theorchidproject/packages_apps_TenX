@@ -266,11 +266,12 @@
                    android:targetClass="com.android.systemui.tuner.LockscreenActivity" />
         </Preference>
 
-        <Preference
-            android:key="omnijaws_settings"
+        <com.tenx.support.preferences.SystemSettingMasterSwitchPreference
+            android:key="lockscreen_weather_enabled"
             android:title="@string/weather_title"
             android:summary="@string/weather_summary"
-            android:fragment="com.tenx.settings.fragments.OmniJawsSettings" />
+            android:fragment="com.tenx.settings.fragments.OmniJawsSettings"
+            android:defaultValue="false" />
 
         <com.tenx.support.preferences.SecureSettingSwitchPreference
             android:key="hide_lockicon"
