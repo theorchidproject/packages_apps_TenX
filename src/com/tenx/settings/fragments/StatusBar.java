@@ -39,11 +39,13 @@ public class StatusBar extends SettingsPreferenceFragment implements
     private static final String STATUS_BAR_LOGO = "status_bar_logo";
     private static final String CARRIER_LABEL = "carrier_label_enabled";
     private static final String STATUS_BAR_CLOCK = "status_bar_clock";
+    private static final String BATTERY_BAR_ENABLED = "battery_bar_enabled";
 
     private SystemSettingMasterSwitchPreference mNetworkTraffic;
     private SystemSettingMasterSwitchPreference mStatusBarLogo;
     private SystemSettingMasterSwitchPreference mCarrierLabel;
     private SystemSettingMasterSwitchPreference mStatusBarClockShow;
+    private SystemSettingMasterSwitchPreference mBatteryBar;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -71,6 +73,11 @@ public class StatusBar extends SettingsPreferenceFragment implements
         mStatusBarClockShow.setChecked((Settings.System.getInt(resolver,
                 Settings.System.STATUS_BAR_CLOCK, 1) == 1));
         mStatusBarClockShow.setOnPreferenceChangeListener(this);
+
+        mBatteryBar = (SystemSettingMasterSwitchPreference) findPreference(BATTERY_BAR_ENABLED);
+        mBatteryBar.setChecked((Settings.System.getInt(resolver,
+                Settings.System.BATTERY_BAR_ENABLED, 0)) == 1);
+        mBatteryBar.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -95,6 +102,11 @@ public class StatusBar extends SettingsPreferenceFragment implements
             boolean value = (Boolean) newValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_CLOCK, value ? 1 : 0);
+            return true;
+        } else if (preference == mBatteryBar) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.BATTERY_BAR_ENABLED, value ? 1 : 0);
             return true;
         }
         return false;
