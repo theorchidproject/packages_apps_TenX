@@ -95,6 +95,12 @@
             android:defaultValue="0"
             android:summary="%s" />
 
+        <com.tenx.support.preferences.SystemSettingSwitchPreference
+            android:key="oos_dismiss_all_button"
+            android:title="@string/enable_clear_all_button"
+            android:summary="@string/enable_clear_all_button_summary"
+            android:defaultValue="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
