@@ -990,4 +990,13 @@
     <string name="enable_clear_all_button">Clear All Button instead of Text</string>
     <string name="enable_clear_all_button_summary">Show clear all notifications button in quick settings instead of default text one</string>
 
+    <!-- OOS Clear all color modes -->
+    <string name="oos_dismiss_all_title">OOS Clear Notifications</string>
+    <string name="oos_bg_color">Icon color</string>
+    <string name="oos_icon_color">Icon color (Background)</string>
+    <string name="oos_color_default">Default</string>
+    <string name="oos_color_accent">Accent</string>
+    <string name="oos_notif_color_custom">Custom color</string>
+    <string name="oos_color_custom">Custom</string>
+
 </resources>

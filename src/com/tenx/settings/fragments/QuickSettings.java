@@ -33,6 +33,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.tenx.support.preferences.CustomSeekBarPreference;
 import com.tenx.support.preferences.SystemSettingEditTextPreference;
 import com.tenx.support.preferences.SystemSettingListPreference;
+import com.tenx.support.colorpicker.ColorPickerPreference;
 
 public class QuickSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
@@ -43,6 +44,10 @@ public class QuickSettings extends SettingsPreferenceFragment
     private static final String KEY_QS_PANEL_ALPHA = "qs_panel_alpha";
     private static final String TENX_FOOTER_TEXT_STRING = "tenx_footer_text_string";
     private static final String TENX_FOOTER_TEXT_FONT = "tenx_footer_text_font";
+    private static final String OOS_BG_COLOR = "dismiss_all_button_bg_color";
+    private static final String OOS_ICON_COLOR = "dismiss_all_button_icon_color";
+    private static final String OOS_BG_COLOR_CUST = "dismiss_all_button_bg_color_custom";
+    private static final String OOS_ICON_COLOR_CUST = "dismiss_all_button_icon_color_custom";
 
     private CustomSeekBarPreference mQsColumnsPortrait;
     private CustomSeekBarPreference mQsColumnsLandscape;
@@ -50,6 +55,10 @@ public class QuickSettings extends SettingsPreferenceFragment
     private CustomSeekBarPreference mQsPanelAlpha;
     private SystemSettingEditTextPreference mFooterString;
     private SystemSettingListPreference mQsFooterTextFont;
+    private SystemSettingListPreference mBgColor;
+    private SystemSettingListPreference mIconColor;
+    private ColorPickerPreference mBgColorCust;
+    private ColorPickerPreference mIconColorCust;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -99,6 +108,47 @@ public class QuickSettings extends SettingsPreferenceFragment
                 getContentResolver(), Settings.System.TENX_FOOTER_TEXT_FONT, 28)));
         mQsFooterTextFont.setSummary(mQsFooterTextFont.getEntry());
         mQsFooterTextFont.setOnPreferenceChangeListener(this);
+
+        mBgColor = (SystemSettingListPreference) findPreference(OOS_BG_COLOR);
+        mBgColor.setOnPreferenceChangeListener(this);
+        int bgColor = Settings.System.getIntForUser(resolver,
+                Settings.System.DISMISS_ALL_BUTTON_BG_COLOR, 0, UserHandle.USER_CURRENT);
+        mBgColor.setValue(String.valueOf(bgColor));
+        mBgColor.setSummary(mBgColor.getEntry());
+
+        mIconColor = (SystemSettingListPreference) findPreference(OOS_ICON_COLOR);
+        mIconColor.setOnPreferenceChangeListener(this);
+        int iconColor = Settings.System.getIntForUser(resolver,
+                Settings.System.DISMISS_ALL_BUTTON_ICON_COLOR, 0, UserHandle.USER_CURRENT);
+        mIconColor.setValue(String.valueOf(iconColor));
+        mIconColor.setSummary(mIconColor.getEntry());
+
+        mBgColorCust = (ColorPickerPreference) findPreference(OOS_BG_COLOR_CUST);
+        mBgColorCust.setOnPreferenceChangeListener(this);
+        int bgColorCust = Settings.System.getInt(getContentResolver(),
+                Settings.System.DISMISS_ALL_BUTTON_BG_COLOR_CUSTOM, 0xFFFFFFFF);
+        String bgColorCustHex = String.format("#%08x", (0xFFFFFFFF & bgColorCust));
+        if (bgColorCustHex.equals("#ffffffff")) {
+            mBgColorCust.setSummary(R.string.default_string);
+        } else {
+            mBgColorCust.setSummary(bgColorCustHex);
+        }
+        mBgColorCust.setNewPreviewColor(bgColorCust);
+
+        mIconColorCust = (ColorPickerPreference) findPreference(OOS_ICON_COLOR_CUST);
+        mIconColorCust.setOnPreferenceChangeListener(this);
+        int iconColorCust = Settings.System.getInt(getContentResolver(),
+                Settings.System.DISMISS_ALL_BUTTON_ICON_COLOR_CUSTOM, 0xFFFFFFFF);
+        String iconColorCustHex = String.format("#%08x", (0xFFFFFFFF & iconColorCust));
+        if (iconColorCustHex.equals("#ffffffff")) {
+            mIconColorCust.setSummary(R.string.default_string);
+        } else {
+            mIconColorCust.setSummary(iconColorCustHex);
+        }
+        mIconColorCust.setNewPreviewColor(iconColorCust);
+
+        updateBgPrefs(bgColor);
+        updateIconPrefs(iconColor);
    }
 
     @Override
@@ -143,8 +193,66 @@ public class QuickSettings extends SettingsPreferenceFragment
             mQsFooterTextFont.setValue(String.valueOf(value));
             mQsFooterTextFont.setSummary(mQsFooterTextFont.getEntry());
             return true;
+        } else if (preference ==  mBgColor) {
+            int bgColor = Integer.parseInt(((String) newValue).toString());
+            Settings.System.putIntForUser(resolver,
+                    Settings.System.DISMISS_ALL_BUTTON_BG_COLOR, bgColor, UserHandle.USER_CURRENT);
+            int index = mBgColor.findIndexOfValue((String) newValue);
+            mBgColor.setSummary(
+                    mBgColor.getEntries()[index]);
+            updateBgPrefs(bgColor);
+            return true;
+        } else if (preference ==  mIconColor) {
+            int iconColor = Integer.parseInt(((String) newValue).toString());
+            Settings.System.putIntForUser(resolver,
+                    Settings.System.DISMISS_ALL_BUTTON_ICON_COLOR, iconColor, UserHandle.USER_CURRENT);
+            int index = mIconColor.findIndexOfValue((String) newValue);
+            mIconColor.setSummary(
+                    mIconColor.getEntries()[index]);
+            updateIconPrefs(iconColor);
+            return true;
+        } else if (preference == mBgColorCust) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            if (hex.equals("#ffffffff")) {
+                preference.setSummary(R.string.default_string);
+            } else {
+                preference.setSummary(hex);
+            }
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.DISMISS_ALL_BUTTON_BG_COLOR_CUSTOM, intHex);
+            return true;
+        } else if (preference == mIconColorCust) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            if (hex.equals("#ffffffff")) {
+                preference.setSummary(R.string.default_string);
+            } else {
+                preference.setSummary(hex);
+            }
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.DISMISS_ALL_BUTTON_ICON_COLOR_CUSTOM, intHex);
+            return true;
         }
         return false;
+    }
+
+    private void updateBgPrefs(int bgColor) {
+       if (bgColor == 2) {
+           mBgColorCust.setEnabled(true);
+       } else {
+           mBgColorCust.setEnabled(false);
+       }
+    }
+
+    private void updateIconPrefs(int iconColor) {
+       if (iconColor == 2) {
+           mIconColorCust.setEnabled(true);
+       } else {
+           mIconColorCust.setEnabled(false);
+       }
     }
 
     @Override

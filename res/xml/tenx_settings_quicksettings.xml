@@ -95,12 +95,6 @@
             android:defaultValue="0"
             android:summary="%s" />
 
-        <com.tenx.support.preferences.SystemSettingSwitchPreference
-            android:key="oos_dismiss_all_button"
-            android:title="@string/enable_clear_all_button"
-            android:summary="@string/enable_clear_all_button_summary"
-            android:defaultValue="false" />
-
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -202,6 +196,47 @@
             android:title="@string/qs_footer_edit_title"
             android:summary="@string/qs_footer_edit_summary"
             android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+       android:title="@string/oos_dismiss_all_title">
+
+       <com.tenx.support.preferences.SystemSettingSwitchPreference
+           android:key="oos_dismiss_all_button"
+           android:title="@string/enable_clear_all_button"
+           android:summary="@string/enable_clear_all_button_summary"
+           android:defaultValue="false" />
+
+       <com.tenx.support.preferences.SystemSettingListPreference
+           android:key="dismiss_all_button_bg_color"
+           android:title="@string/oos_bg_color"
+           android:entries="@array/oos_clear_all_color_entries"
+           android:entryValues="@array/oos_clear_all_color_values"
+           android:dependency="oos_dismiss_all_button"
+           android:defaultValue="0" />
+
+       <com.tenx.support.colorpicker.ColorPickerPreference
+           android:key="dismiss_all_button_bg_color_custom"
+           android:title="@string/oos_notif_color_custom"
+           android:dependency="oos_dismiss_all_button"
+           android:defaultValue="0xffffffff"
+           android:persistent="false" />
+
+       <com.tenx.support.preferences.SystemSettingListPreference
+           android:key="dismiss_all_button_icon_color"
+           android:title="@string/oos_icon_color"
+           android:entries="@array/oos_clear_all_color_entries"
+           android:entryValues="@array/oos_clear_all_color_values"
+           android:dependency="oos_dismiss_all_button"
+           android:defaultValue="0" />
+
+       <com.tenx.support.colorpicker.ColorPickerPreference
+           android:key="dismiss_all_button_icon_color_custom"
+           android:title="@string/oos_notif_color_custom"
+           android:dependency="oos_dismiss_all_button"
+           android:defaultValue="0xffffffff"   
+           android:persistent="false" />
 
     </PreferenceCategory>
 
