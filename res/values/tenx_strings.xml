@@ -1036,4 +1036,8 @@
     <string name="network_activity_title">Show Network activity</string>
     <string name="network_activity_summary">Shows activity arrows near Data symbol</string>
 
+    <!-- Battery in QS header -->
+    <string name="qs_battery_location_bar">Battery in QS Header</string>
+    <string name="qs_battery_location_bar_summary">Shows battery in QS Header</string>
+
 </resources>

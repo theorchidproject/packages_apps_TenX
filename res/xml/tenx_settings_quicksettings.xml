@@ -65,6 +65,12 @@
     <PreferenceCategory
         android:title="@string/qs_header_icons_title">
 
+        <com.tenx.support.preferences.SecureSettingSwitchPreference
+            android:key="qs_battery_location_bar"
+            android:title="@string/qs_battery_location_bar"
+            android:summary="@string/qs_battery_location_bar_summary"
+            android:defaultValue="false" />
+
         <com.tenx.support.preferences.SystemSettingListPreference
             android:key="qs_battery_mode"
             android:title="@string/qs_battery_percentage_title"
