@@ -1028,4 +1028,12 @@
     <string name="click_partial_screenshot_title">Click to partial screenshot</string>
     <string name="click_partial_screenshot_summary">Short click Volume Down and Power to take partial screenshot</string>
 
+    <!-- Wi-Fi Activity -->
+    <string name="wifi_activity_title">Show Wi-Fi activity</string>
+    <string name="wifi_activity_summary">Shows activity arrows near Wi-Fi icon</string>
+
+    <!-- Network  Activity -->
+    <string name="network_activity_title">Show Network activity</string>
+    <string name="network_activity_summary">Shows activity arrows near Data symbol</string>
+
 </resources>

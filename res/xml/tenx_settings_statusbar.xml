@@ -75,6 +75,18 @@
             android:summary="%s"
             android:defaultValue="0"/>
 
+        <com.tenx.support.preferences.SystemSettingSwitchPreference
+            android:key="wifi_activity_enabled"
+            android:title="@string/wifi_activity_title"
+            android:summary="@string/wifi_activity_summary"
+            android:defaultValue="false"/>
+
+        <com.tenx.support.preferences.SystemSettingSwitchPreference
+            android:key="network_activity_enabled"
+            android:title="@string/network_activity_title"
+            android:summary="@string/network_activity_summary"
+            android:defaultValue="false"/>
+
         <com.tenx.support.preferences.SystemSettingSwitchPreference 
             android:key="show_fourg_icon" 
             android:title="@string/show_fourg_icon_title" 
