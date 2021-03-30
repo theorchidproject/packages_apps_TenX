@@ -1005,4 +1005,8 @@
     <string name="qs_datausage_daily">Daily usage</string>
     <string name="qs_datausage_monthly">Monthly usage</string>
 
+    <!-- Misc category -->
+    <string name="system_animation_title">System</string>
+    <string name="qs_header_icons_title">Header</string>
+
 </resources>
