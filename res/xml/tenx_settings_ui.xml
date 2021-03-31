@@ -65,10 +65,12 @@
     <PreferenceCategory
         android:title="@string/qs_style_title">
 
-        <PreferenceScreen
-            android:key="tenx_qs_header"
+        <com.tenx.support.preferences.SystemSettingMasterSwitchPreference
+            android:key="status_bar_custom_header"
             android:title="@string/qsheader_title"
-            android:fragment="com.tenx.settings.fragments.QSHeader" />
+            android:summary="@string/qsheader_summary"
+            android:fragment="com.tenx.settings.fragments.QSHeader"
+            android:defaultValue="false" />
 
         <com.tenx.support.preferences.SystemSettingListPreference
             android:key="qs_panel_bg_use_new_tint"

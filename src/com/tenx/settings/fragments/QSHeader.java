@@ -29,7 +29,6 @@ import com.android.settingslib.search.SearchIndexable;
 import com.android.settings.Utils;
 
 import com.tenx.support.preferences.CustomSeekBarPreference;
-import com.tenx.support.preferences.SystemSettingSwitchPreference;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -46,7 +45,6 @@ public class QSHeader extends SettingsPreferenceFragment implements
     private CustomSeekBarPreference mHeaderShadow;
     private ListPreference mHeaderProvider;
     private String mDaylightHeaderProvider;
-    private SwitchPreference mHeaderEnabled;
 
     private static final String CUSTOM_HEADER_BROWSE = "custom_header_browse";
     private static final String CUSTOM_HEADER_IMAGE = "status_bar_custom_header";
@@ -54,7 +52,6 @@ public class QSHeader extends SettingsPreferenceFragment implements
     private static final String CUSTOM_HEADER_IMAGE_SHADOW = "status_bar_custom_header_shadow";
     private static final String CUSTOM_HEADER_PROVIDER = "custom_header_provider";
     private static final String STATUS_BAR_CUSTOM_HEADER = "status_bar_custom_header";
-    private static final String CUSTOM_HEADER_ENABLED = "status_bar_custom_header";
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -66,9 +63,6 @@ public class QSHeader extends SettingsPreferenceFragment implements
         ContentResolver resolver = getActivity().getContentResolver();
         mHeaderBrowse = findPreference(CUSTOM_HEADER_BROWSE);
         mHeaderBrowse.setEnabled(isBrowseHeaderAvailable());
-
-        mHeaderEnabled = (SwitchPreference) findPreference(CUSTOM_HEADER_ENABLED);
-        mHeaderEnabled.setOnPreferenceChangeListener(this);
 
         mDaylightHeaderPack = (ListPreference) findPreference(DAYLIGHT_HEADER_PACK);
 
@@ -148,11 +142,6 @@ public class QSHeader extends SettingsPreferenceFragment implements
                 mDaylightHeaderPack.setEnabled(value.equals(mDaylightHeaderProvider));
                 mHeaderBrowse.setTitle(valueIndex == 0 ? R.string.custom_header_browse_title : R.string.custom_header_pick_title);
                 mHeaderBrowse.setSummary(valueIndex == 0 ? R.string.custom_header_browse_summary_new : R.string.custom_header_pick_summary);
-                return true;
-
-            case CUSTOM_HEADER_ENABLED:
-                Boolean headerEnabled = (Boolean) newValue;
-                updateHeaderProviderSummary(headerEnabled);
                 return true;
 
             default:
