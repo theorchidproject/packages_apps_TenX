@@ -1099,4 +1099,7 @@
     <string name="height_title">Height</string>
     <string name="status_bar_custom_header_height_title">Image height offset</string>
 
+    <!-- Full screen for apps -->
+    <string name="full_screen_apps_title">Full screen</string>
+
 </resources>
