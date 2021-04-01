@@ -1112,4 +1112,10 @@
     <string name="corner_fwvals_summary">Useful if the device actually has rounded corners</string>
     <string name="unit_pixels">dp</string>
 
+    <!-- TenX Footer Text Color modes -->
+    <string name="tenx_footer_text_color_title">Color</string>
+    <string name="tenx_footer_text_color_default">Default</string>
+    <string name="tenx_footer_text_color_accent">Accent</string>
+    <string name="tenx_footer_text_color_custom">Custom</string>
+
 </resources>

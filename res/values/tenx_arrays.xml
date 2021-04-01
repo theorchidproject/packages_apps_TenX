@@ -1347,4 +1347,17 @@
         <item>@string/static_header_provider</item>
     </string-array>
 
+    <!-- TenX Footer Text Color modes -->
+    <string-array name="tenx_footer_text_color_entries" translatable="false">
+        <item>@string/tenx_footer_text_color_default</item>
+        <item>@string/tenx_footer_text_color_accent</item>
+        <item>@string/tenx_footer_text_color_custom</item>
+    </string-array>
+
+    <string-array name="tenx_footer_text_color_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
 </resources>

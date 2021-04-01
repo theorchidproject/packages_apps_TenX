@@ -48,6 +48,8 @@ public class QuickSettings extends SettingsPreferenceFragment
     private static final String OOS_ICON_COLOR = "dismiss_all_button_icon_color";
     private static final String OOS_BG_COLOR_CUST = "dismiss_all_button_bg_color_custom";
     private static final String OOS_ICON_COLOR_CUST = "dismiss_all_button_icon_color_custom";
+    private static final String TENX_FOOTER_TEXT_COLOR = "tenx_footer_text_color";
+    private static final String TENX_FOOTER_TEXT_COLOR_CUSTOM = "tenx_footer_text_color_custom";
 
     private CustomSeekBarPreference mQsColumnsPortrait;
     private CustomSeekBarPreference mQsColumnsLandscape;
@@ -57,8 +59,10 @@ public class QuickSettings extends SettingsPreferenceFragment
     private SystemSettingListPreference mQsFooterTextFont;
     private SystemSettingListPreference mBgColor;
     private SystemSettingListPreference mIconColor;
+    private SystemSettingListPreference mTextColor;
     private ColorPickerPreference mBgColorCust;
     private ColorPickerPreference mIconColorCust;
+    private ColorPickerPreference mTextColorCustom;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -149,6 +153,27 @@ public class QuickSettings extends SettingsPreferenceFragment
 
         updateBgPrefs(bgColor);
         updateIconPrefs(iconColor);
+
+        mTextColor = (SystemSettingListPreference) findPreference(TENX_FOOTER_TEXT_COLOR);
+        mTextColor.setOnPreferenceChangeListener(this);
+        int textColor = Settings.System.getIntForUser(resolver,
+                Settings.System.TENX_FOOTER_TEXT_COLOR, 0, UserHandle.USER_CURRENT);
+        mTextColor.setValue(String.valueOf(textColor));
+        mTextColor.setSummary(mTextColor.getEntry());
+
+        mTextColorCustom = (ColorPickerPreference) findPreference(TENX_FOOTER_TEXT_COLOR_CUSTOM);
+        mTextColorCustom.setOnPreferenceChangeListener(this);
+        int textColorCustom = Settings.System.getInt(getContentResolver(),
+                Settings.System.TENX_FOOTER_TEXT_COLOR_CUSTOM, 0xFFFFFFFF);
+        String textColorCustomHex = String.format("#%08x", (0xFFFFFFFF & textColorCustom));
+        if (textColorCustomHex.equals("#ffffffff")) {
+        mTextColorCustom.setSummary(R.string.default_string);
+        } else {
+        mTextColorCustom.setSummary(textColorCustomHex);
+        }
+        mTextColorCustom.setNewPreviewColor(textColorCustom);
+
+        updateColorPrefs(textColor);
    }
 
     @Override
@@ -235,6 +260,27 @@ public class QuickSettings extends SettingsPreferenceFragment
             Settings.System.putInt(getContentResolver(),
                     Settings.System.DISMISS_ALL_BUTTON_ICON_COLOR_CUSTOM, intHex);
             return true;
+        } else if (preference == mTextColor) {
+            int textColor = Integer.parseInt(((String) newValue).toString());
+            Settings.System.putIntForUser(resolver,
+                    Settings.System.TENX_FOOTER_TEXT_COLOR, textColor, UserHandle.USER_CURRENT);
+            int index = mTextColor.findIndexOfValue((String) newValue);
+            mTextColor.setSummary(
+                    mTextColor.getEntries()[index]);
+            updateColorPrefs(textColor);
+            return true;
+        } else if (preference == mTextColorCustom) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            if (hex.equals("#ffffffff")) {
+                preference.setSummary(R.string.default_string);
+            } else {
+                preference.setSummary(hex);
+            }
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.TENX_FOOTER_TEXT_COLOR_CUSTOM, intHex);
+            return true;
         }
         return false;
     }
@@ -252,6 +298,14 @@ public class QuickSettings extends SettingsPreferenceFragment
            mIconColorCust.setEnabled(true);
        } else {
            mIconColorCust.setEnabled(false);
+       }
+    }
+
+    private void updateColorPrefs(int textColor) {
+       if (textColor == 2) {
+           mTextColorCustom.setEnabled(true);
+       } else {
+           mTextColorCustom.setEnabled(false);
        }
     }
 
