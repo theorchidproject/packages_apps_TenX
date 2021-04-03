@@ -71,13 +71,6 @@
     <string name="powermenu_columns_title">Columns</string>
     <string name="powermenu_columns_summary">Configure the columns</string>
 
-    <!-- Theming -->
-    <string name="color_title">Color</string>
-    <string name="accent_color">Accent picker</string>
-    <string name="accent_summary">System wide accent maker</string>
-    <string name="gradient_color">Gradient picker</string>
-    <string name="gradient_summary">Gradient effect maker</string>
-
     <!-- Quick pull down-->
     <string name="qs_gestures_title">QS Gestures</string>
     <string name="quick_pulldown_title">Quick pulldown</string>

@@ -27,8 +27,6 @@ import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.content.om.IOverlayManager;
-import android.content.om.OverlayInfo;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -60,8 +58,6 @@ import com.android.settings.display.OverlayCategoryPreferenceController;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 
-import com.tenx.support.colorpicker.ColorPickerPreference;
-
 import com.tenx.settings.ui.DeviceThemePreferenceController;
 import com.tenx.settings.ui.HeaderImagePreferenceController;
 
@@ -70,18 +66,9 @@ public class UserInterface extends DashboardFragment implements
 
     private static final String TAG = "UserInterface";
 
-    private static final int DEFAULT_COLOR = 0xff1a73e8;
-
-    private static final String ACCENT_COLOR = "accent_color";
-    private static final String ACCENT_COLOR_PROP = "persist.sys.theme.accentcolor";
-    private static final String GRADIENT_COLOR = "gradient_color";
-    private static final String GRADIENT_COLOR_PROP = "persist.sys.theme.gradientcolor";
     private static final String FILE_QSPANEL_SELECT = "file_qspanel_select";
     private static final int REQUEST_PICK_IMAGE = 0;
 
-    private IOverlayManager mOverlayService;
-    private ColorPickerPreference mThemeColor;
-    private ColorPickerPreference mGradientColor;
     private Preference mQsPanelImage;
 
     @Override
@@ -97,12 +84,6 @@ public class UserInterface extends DashboardFragment implements
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-
-        mOverlayService = IOverlayManager.Stub
-                .asInterface(ServiceManager.getService(Context.OVERLAY_SERVICE));
-        mQsPanelImage = findPreference(FILE_QSPANEL_SELECT);
-        setupAccentPref();
-        setupGradientPref();
     }
 
     @Override
@@ -126,28 +107,7 @@ public class UserInterface extends DashboardFragment implements
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        if (preference == mThemeColor) {
-            int color = (Integer) objValue;
-            String hexColor = String.format("%08X", (0xFFFFFFFF & color));
-            SystemProperties.set(ACCENT_COLOR_PROP, hexColor);
-            try {
-                 mOverlayService.reloadAndroidAssets(UserHandle.USER_CURRENT);
-                 mOverlayService.reloadAssets("com.android.settings", UserHandle.USER_CURRENT);
-                 mOverlayService.reloadAssets("com.android.systemui", UserHandle.USER_CURRENT);
-             } catch (RemoteException ignored) {
-             }
-        } else if (preference == mGradientColor) {
-            int color = (Integer) objValue;
-            String hexColor = String.format("%08X", (0xFFFFFFFF & color));
-            SystemProperties.set(GRADIENT_COLOR_PROP, hexColor);
-            try {
-                 mOverlayService.reloadAndroidAssets(UserHandle.USER_CURRENT);
-                 mOverlayService.reloadAssets("com.android.settings", UserHandle.USER_CURRENT);
-                 mOverlayService.reloadAssets("com.android.systemui", UserHandle.USER_CURRENT);
-             } catch (RemoteException ignored) {
-             }
-        }
-        return true;
+        return false;
     }
 
     @Override
@@ -159,38 +119,6 @@ public class UserInterface extends DashboardFragment implements
             return true;
         }
         return super.onPreferenceTreeClick(preference);
-    }
-
-    private void setupAccentPref() {
-        mThemeColor = (ColorPickerPreference) findPreference(ACCENT_COLOR);
-        String colorVal = SystemProperties.get(ACCENT_COLOR_PROP, "-1");
-        int color = "-1".equals(colorVal)
-                ? DEFAULT_COLOR
-                : Color.parseColor("#" + colorVal);
-        mThemeColor.setNewPreviewColor(color);
-        mThemeColor.setOnPreferenceChangeListener(this);
-        String hexColor = String.format("%08X", (0xFFFFFFFF & color));
-        if (hexColor.equals("0xff1a73e8")) {
-            mThemeColor.setSummary(R.string.default_string);
-        } else {
-            mThemeColor.setSummary(hexColor);
-        }
-    }
-
-    private void setupGradientPref() {
-        mGradientColor = (ColorPickerPreference) findPreference(GRADIENT_COLOR);
-        String colorVal = SystemProperties.get(GRADIENT_COLOR_PROP, "-1");
-        int color = "-1".equals(colorVal)
-                ? DEFAULT_COLOR
-                : Color.parseColor("#" + colorVal);
-        mGradientColor.setNewPreviewColor(color);
-        mGradientColor.setOnPreferenceChangeListener(this);
-        String hexColor = String.format("%08X", (0xFFFFFFFF & color));
-        if (hexColor.equals("0xff1a73e8")) {
-            mGradientColor.setSummary(R.string.default_string);
-        } else {
-            mGradientColor.setSummary(hexColor);
-        }
     }
 
     @Override
