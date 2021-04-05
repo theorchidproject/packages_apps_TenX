@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2021 TenX-OS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:title="@string/about_us_title" >
+
+    <Preference android:key="tenx_logo"
+        android:enabled="false"
+        android:layout="@layout/about_tenx_logo" />
+
+    <PreferenceCategory
+        android:title="@string/tenx_team_title">
+
+        <Preference
+            android:title="@string/advaith_bhat_title"
+            android:summary="@string/advaith_bhat_summary"
+            android:icon="@drawable/ic_tenx_core_developer">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://t.me/advaithbhat" />
+        </Preference>
+
+        <Preference
+            android:title="@string/madhav_saladi_title"
+            android:summary="@string/madhav_saladi_summary"
+            android:icon="@drawable/ic_tenx_lead_developer">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://t.me/BabluS" />
+        </Preference>
+
+        <Preference
+            android:title="@string/roger_t_title"
+            android:summary="@string/roger_t_summary"
+            android:icon="@drawable/ic_tenx_designer">
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/tenx_maintainers_title">
+
+        <Preference
+            android:key="maintainers"
+            android:fragment="com.tenx.settings.about.Maintainers"
+            android:title="@string/device_maintainers_title"
+            android:summary="@string/device_maintainers_title_summary"
+            android:icon="@drawable/ic_tenx_maintainer" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/tenx_telegram">
+
+        <Preference
+            android:title="@string/tenx_community_title"
+            android:summary="@string/tenx_community_summary"
+            android:icon="@drawable/ic_tenx_telegram">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://t.me/TenX_OS" />
+        </Preference>
+
+        <Preference
+            android:title="@string/tenx_announcements_title"
+            android:summary="@string/tenx_announcements_summary"
+            android:icon="@drawable/ic_tenx_announcements">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://t.me/TenX_Announcements" />
+        </Preference>
+
+        <Preference
+            android:title="@string/tenx_updates_title"
+            android:summary="@string/tenx_updates_summary"
+            android:icon="@drawable/ic_tenx_updates">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://t.me/TenX_Updates" />
+        </Preference>
+
+        <Preference
+            android:title="@string/tenx_wallpaper_title"
+            android:summary="@string/tenx_wallpaper_summary"
+            android:icon="@drawable/ic_tenx_wallpapers">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://t.me/TenX_wallpapers" />
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/tenx_github">
+
+        <Preference
+            android:title="@string/tenx_source_title"
+            android:summary="@string/tenx_source_summary"
+            android:icon="@drawable/ic_tenx_github">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/TenX-OS" />
+        </Preference>
+
+        <Preference
+            android:title="@string/tenx_devices_title"
+            android:summary="@string/tenx_devices_summary"
+            android:icon="@drawable/ic_tenx_github">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/Ten-X-Devices" />
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/tenx_downloads_title">
+
+        <Preference
+            android:title="@string/tenx_downloads_title"
+            android:summary="@string/tenx_downloads_summary"
+            android:icon="@drawable/ic_tenx_downloads">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://sourceforge.net/projects/tenx-os/" />
+        </Preference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

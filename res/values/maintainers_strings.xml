@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2020 TenX-OS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Maintainer's title -->
+    <string name="maintainers_title">Maintainer\'s</string>
+
+    <!-- Asus title -->
+    <string name="asus_title">Asus</string>
+
+    <!-- Xiaomi title -->
+    <string name="xiaomi_title">Xiaomi</string>
+
+    <!-- Lenovo title -->
+    <string name="lenovo_title">Lenovo</string>
+
+    <!-- Asus Zenfone Max Pro M1 -->
+    <string name="asus_zenfone_max_pro_m1_title">Asus Zenfone Max Pro M1</string>
+    <string name="asus_zenfone_max_pro_m1_summary" translatable="false">- X00T \n- Advaith Bhat</string>
+
+    <!-- Lenovo Z6 Pro -->
+    <string name="lenovo_z6_pro_title">Lenovo Z6 Pro</string>
+    <string name="lenovo_z6_pro_summary" translatable="false">- zippo \n- Einar Gednochsson</string>
+
+    <!-- Realme title -->
+    <string name="realme_title">Realme</string>
+
+    <!-- Realme 5pro -->
+    <string name="realme_5_pro_title">Realme 5 Pro</string>
+    <string name="realme_5_pro_summary" translatable="false">- RMX1971 \n- Madhav Saladi (BabluS)</string>
+
+    <!-- Realme XT -->
+    <string name="realme_xt_title">Realme XT</string>
+    <string name="realme_xt_summary" translatable="false">- RMX1921 \n- Advaith Bhat</string>
+
+    <!-- Realme C3 -->
+    <string name="realme_c3_title">Realme C3</string>
+    <string name="realme_c3_summary" translatable="false">- RMX2020 \n- Utkarsh Kanojiya</string>
+
+    <!-- Realme 3 Pro -->
+    <string name="realme_3_pro_title">Realme 3 Pro</string>
+    <string name="realme_3_pro_summary" translatable="false">- RMX1851 \n- Supratim Dey</string>
+
+    <!-- Xiaomi Redmi note 7 pro -->
+    <string name="xiaomi_redmi_note_7_pro_title">Redmi Note 7 Pro</string>
+    <string name="xiaomi_redmi_note_7_pro_summary" translatable="false">- violet \n- Subrata Maity</string>
+
+    <!-- Xiaomi Redmi note 8 -->
+    <string name="xiaomi_redmi_note_8_title">Redmi Note 8</string>
+    <string name="xiaomi_redmi_note_8_summary" translatable="false">- ginkgo \n- Gabriel Costa (Gabx)</string>
+
+    <!-- Xiaomi Redmi note 9 pro/max/9s/poco M2 pro -->
+    <string name="redmi_note9_pro_title">- Redmi Note 9 Pro \n- Poco M2 Pro \n- Redmi Note 9S \n- Redmi Note 9 Pro Max</string>
+    <string name="redmi_note9_pro_summary" translatable="false">- miatoll \n- Bala Surya Vamsi</string>
+
+</resources>

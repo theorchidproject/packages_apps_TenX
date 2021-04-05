@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2020 TenX-OS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- About TenX Phrase -->
+    <string name="tenx_phrase">* TenX is an AOSP based Custom ROM. \N* TenX comes with tones of customisations out of the box.</string>
+
+    <!-- Team title -->
+    <string name="tenx_team_title">Team</string>
+    <string name="advaith_bhat_title">Advaith Bhat (Aston-Martinn)</string>
+    <string name="advaith_bhat_summary" translatable="false">• Founder \n• Core Developer \n• Maintainer</string>
+    <string name="madhav_saladi_title">Madhav Saladi (BabluS)</string>
+    <string name="madhav_saladi_summary" translatable="false">• Lead Developer \n• Maintainer</string>
+    <string name="roger_t_title">Roger Truttmann (Roger.T)</string>
+    <string name="roger_t_summary" translatable="false">• Graphics Designer \n• Designer</string>
+
+    <!-- Maintainer's title -->
+    <string name="tenx_maintainers_title">Maintainer\'s</string>
+    <string name="device_maintainers_title">Device Maintainer\'s</string>
+    <string name="device_maintainers_title_summary">TenX Official device maintainer\'s</string>
+
+    <!-- Telegram title -->
+    <string name="tenx_telegram">Telegram</string>
+    <string name="tenx_community_title">TenX | Community</string>
+    <string name="tenx_community_summary">Official support group</string>
+    <string name="tenx_announcements_title">TenX | Announcements</string>
+    <string name="tenx_announcements_summary">Official Announcements channel</string>
+    <string name="tenx_updates_title"> TenX | Updates</string>
+    <string name="tenx_updates_summary">Official Updates channel</string>
+    <string name="tenx_wallpaper_title">TenX | Wallpapers</string>
+    <string name="tenx_wallpaper_summary">Official Wallpapers channel</string>
+
+    <!-- GitHub title -->
+    <string name="tenx_github">GitHub</string>
+    <string name="tenx_source_title">TenX Source</string>
+    <string name="tenx_source_summary">TenX source code</string>
+    <string name="tenx_devices_title">TenX Devices source</string>
+    <string name="tenx_devices_summary">TenX devices hub</string>
+
+    <!-- Downloads -->
+    <string name="tenx_downloads_title">Downloads</string>
+    <string name="tenx_downloads_summary">Download the official builds for your Device</string>
+
+</resources>
