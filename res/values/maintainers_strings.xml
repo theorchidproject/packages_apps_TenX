@@ -54,6 +54,10 @@
     <string name="realme_3_pro_title">Realme 3 Pro</string>
     <string name="realme_3_pro_summary" translatable="false">- RMX1851 \n- Supratim Dey</string>
 
+    <!-- Xiaomi Redmi note 5 Pro -->
+    <string name="xiaomi_redmi_note_5_pro_title">Redmi Note 5 Pro</string>
+    <string name="xiaomi_redmi_note_5_pro_summary" translatable="false">- whyred\n- P.M.SALMAN KHAN</string>
+
     <!-- Xiaomi Redmi note 7 pro -->
     <string name="xiaomi_redmi_note_7_pro_title">Redmi Note 7 Pro</string>
     <string name="xiaomi_redmi_note_7_pro_summary" translatable="false">- violet \n- Subrata Maity</string>
@@ -63,7 +67,7 @@
     <string name="xiaomi_redmi_note_8_summary" translatable="false">- ginkgo \n- Gabriel Costa (Gabx)</string>
 
     <!-- Xiaomi Redmi note 9 pro/max/9s/poco M2 pro -->
-    <string name="redmi_note9_pro_title">- Redmi Note 9 Pro \n- Poco M2 Pro \n- Redmi Note 9S \n- Redmi Note 9 Pro Max</string>
-    <string name="redmi_note9_pro_summary" translatable="false">- miatoll \n- Bala Surya Vamsi</string>
+    <string name="xiaomi_redmi_note_9_pro_title">- Redmi Note 9 Pro/Max</string>
+    <string name="xiaomi_redmi_note_9_pro_summary" translatable="false">- miatoll \n- Bala Surya Vamsi</string>
 
 </resources>

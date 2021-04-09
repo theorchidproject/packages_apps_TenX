@@ -73,4 +73,59 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="@string/xiaomi_title">
+
+        <Preference
+            android:title="@string/xiaomi_redmi_note_5_pro_title"
+            android:summary="@string/xiaomi_redmi_note_5_pro_summary"
+            android:icon="@drawable/ic_tenx_devices">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://t.me/SALMAN_IS_HERE" />
+        </Preference>
+
+        <Preference
+            android:title="@string/xiaomi_redmi_note_7_pro_title"
+            android:summary="@string/xiaomi_redmi_note_7_pro_summary"
+            android:icon="@drawable/ic_tenx_devices">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://t.me/Rdx55" />
+        </Preference>
+
+        <Preference
+            android:title="@string/xiaomi_redmi_note_8_title"
+            android:summary="@string/xiaomi_redmi_note_8_summary"
+            android:icon="@drawable/ic_tenx_devices">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://t.me/Gabx_i" />
+        </Preference>
+
+        <Preference
+            android:title="@string/xiaomi_redmi_note_9_pro_title"
+            android:summary="@string/xiaomi_redmi_note_9_pro_summary"
+            android:icon="@drawable/ic_tenx_devices">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://t.me/Surya580" />
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/lenovo_title">
+
+        <Preference
+            android:title="@string/lenovo_z6_pro_title"
+            android:summary="@string/lenovo_z6_pro_summary"
+            android:icon="@drawable/ic_tenx_devices">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://t.me/kanstmablason" />
+        </Preference>
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
