@@ -50,6 +50,11 @@
     <string name="tenx_devices_title">TenX Devices source</string>
     <string name="tenx_devices_summary">TenX devices hub</string>
 
+    <!-- Changelogs title -->
+    <string name="tenx_changelogs">Changelogs</string>
+    <string name="tenx_changelogs_summary">Shows changelogs as per your Device</string>
+    <string name="tenx_changelogs_show">Default</string>
+
     <!-- Downloads -->
     <string name="tenx_downloads_title">Downloads</string>
     <string name="tenx_downloads_summary">Download the official builds for your Device</string>

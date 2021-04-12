@@ -125,6 +125,15 @@
                 android:data="https://github.com/Ten-X-Devices" />
         </Preference>
 
+        <Preference
+            android:title="@string/tenx_changelogs"
+            android:summary="@string/tenx_changelogs_summary"
+            android:icon="@drawable/tenx_changelogs">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/tenx_changelogs_show" />
+        </Preference>
+
     </PreferenceCategory>
 
     <PreferenceCategory
