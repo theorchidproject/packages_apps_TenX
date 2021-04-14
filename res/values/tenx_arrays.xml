@@ -673,6 +673,7 @@
 
     <!-- VoLTE Icon Type -->
     <string-array name="volte_icon_type_entries" translatable="false">
+        <item>@string/volte_icon_margaritov</item>
         <item>@string/volte_icon_vo</item>
         <item>@string/volte_icon_emui</item>
         <item>@string/volte_icon_miui</item>
@@ -685,6 +686,7 @@
     </string-array>
 
     <string-array name="volte_icon_type_values" translatable="false">
+        <item>9</item>
         <item>8</item>
         <item>7</item>
         <item>6</item>
