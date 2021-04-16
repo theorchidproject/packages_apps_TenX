@@ -18,18 +18,22 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/tenx_settings_title" >
 
-         <!-- Ambient Display -->
-         <com.tenx.settings.preferences.TenXPreference
-            android:key="ambient_display_custom"
-            android:persistent="false"
-            android:title="@string/ambient_display_custom_title"
-            android:summary="@string/ambient_display_custom_summary"
-            android:icon="@drawable/ic_settings_ambient_display" >
-            <intent
-               android:action="android.intent.action.MAIN"
-               android:targetPackage="com.custom.ambient.display"
-               android:targetClass="com.custom.ambient.display.DozeSettings" />
-         </com.tenx.settings.preferences.TenXPreference>
+    <Preference android:key="tenx_logo_db"
+        android:enabled="false"
+        android:layout="@layout/tenx_logo_db" />
+
+        <!-- Ambient Display -->
+        <com.tenx.settings.preferences.TenXPreference
+           android:key="ambient_display_custom"
+           android:persistent="false"
+           android:title="@string/ambient_display_custom_title"
+           android:summary="@string/ambient_display_custom_summary"
+           android:icon="@drawable/ic_settings_ambient_display" >
+           <intent
+              android:action="android.intent.action.MAIN"
+              android:targetPackage="com.custom.ambient.display"
+              android:targetClass="com.custom.ambient.display.DozeSettings" />
+        </com.tenx.settings.preferences.TenXPreference>
 
         <!-- User Interface -->
         <com.tenx.settings.preferences.TenXPreference
