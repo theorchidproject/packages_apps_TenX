@@ -112,6 +112,24 @@
                 android:data="https://t.me/Surya580" />
         </Preference>
 
+        <Preference
+            android:title="@string/xiaomi_redmi_9_title"
+            android:summary="@string/xiaomi_redmi_9_summary"
+            android:icon="@drawable/ic_tenx_devices">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://t.me/nauFOSS" />
+        </Preference>
+
+        <Preference
+            android:title="@string/xiaomi_redmi_s2_title"
+            android:summary="@string/xiaomi_redmi_s2_summary"
+            android:icon="@drawable/ic_tenx_devices">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://t.me/ItsAakif" />
+        </Preference>
+
     </PreferenceCategory>
 
     <PreferenceCategory

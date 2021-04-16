@@ -67,7 +67,15 @@
     <string name="xiaomi_redmi_note_8_summary" translatable="false">- ginkgo \n- Gabriel Costa (Gabx)</string>
 
     <!-- Xiaomi Redmi note 9 pro/max/9s/poco M2 pro -->
-    <string name="xiaomi_redmi_note_9_pro_title">- Redmi Note 9 Pro/Max</string>
+    <string name="xiaomi_redmi_note_9_pro_title">Redmi Note 9 Pro/Max</string>
     <string name="xiaomi_redmi_note_9_pro_summary" translatable="false">- miatoll \n- Bala Surya Vamsi</string>
+
+    <!-- Xiaomi Redmi 9 -->
+    <string name="xiaomi_redmi_9_title">Redmi 9</string>
+    <string name="xiaomi_redmi_9_summary" translatable="false">- lava \n- Naufal Wiwit Putra</string>
+
+    <!-- Xiaomi Redmi S2 -->
+    <string name="xiaomi_redmi_s2_title">Readmi S2</string>
+    <string name="xiaomi_redmi_s2_summary" translatable="false">- Ysl \n- Aakif Mudel</string>
 
 </resources>
