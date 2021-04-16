@@ -1198,4 +1198,9 @@
     <string name="keyguard_battery_bar_color_random">Random</string>
     <string name="keyguard_battery_bar_color_custom">Custom</string>
 
+    <!-- Custom statusbar paddings -->
+    <string name="statusbar_custom_title">Statusbar</string>
+    <string name="custom_statusbar_padding_start">Padding (Start)</string>
+    <string name="custom_statusbar_padding_end">Padding (End)</string>
+
 </resources>

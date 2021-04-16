@@ -55,4 +55,27 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+         android:title="@string/statusbar_custom_title">
+
+        <com.tenx.support.preferences.CustomSeekBarPreference
+            android:key="custom_statusbar_padding_start"
+            android:title="@string/custom_statusbar_padding_start"
+            android:max="45"
+            settings:min="5"
+            settings:units="dp"
+            android:defaultValue="5"
+            android:persistent="false" />
+
+        <com.tenx.support.preferences.CustomSeekBarPreference
+            android:key="custom_statusbar_padding_end"
+            android:title="@string/custom_statusbar_padding_end"
+            android:max="45"
+            settings:min="5"
+            android:defaultValue="5"
+            settings:units="dp"
+            android:persistent="false" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
