@@ -61,6 +61,10 @@
             android:key="android.theme.customization.icon_pack.android"
             android:title="@string/theme_customization_sysui_icon_title"/>
 
+        <ListPreference
+            android:key="android.theme.customization.statusbar_height"
+            android:title="@string/statusbar_height_title" />
+
         <com.tenx.support.preferences.SecureSettingSwitchPreference
             android:key="universal_disco"
             android:title="@string/universal_disco_title"

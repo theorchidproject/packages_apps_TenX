@@ -106,6 +106,8 @@ public class UserInterface extends DashboardFragment implements
                 "android.theme.customization.adaptive_icon_shape"));
         controllers.add(new OverlayCategoryPreferenceController(context,
                 "android.theme.customization.icon_pack.android"));
+        controllers.add(new OverlayCategoryPreferenceController(context,
+                "android.theme.customization.statusbar_height"));
         return controllers;
     }
 

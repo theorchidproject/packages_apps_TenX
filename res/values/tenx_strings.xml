@@ -1203,4 +1203,7 @@
     <string name="custom_statusbar_padding_start">Padding (Start)</string>
     <string name="custom_statusbar_padding_end">Padding (End)</string>
 
+    <!-- Custom statusbar height -->
+    <string name="statusbar_height_title">Height</string>
+
 </resources>
