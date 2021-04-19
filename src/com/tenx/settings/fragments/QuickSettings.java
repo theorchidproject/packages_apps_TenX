@@ -18,6 +18,10 @@ package com.tenx.settings.fragments;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemProperties;
@@ -50,11 +54,17 @@ public class QuickSettings extends SettingsPreferenceFragment
     private static final String OOS_ICON_COLOR_CUST = "dismiss_all_button_icon_color_custom";
     private static final String TENX_FOOTER_TEXT_COLOR = "tenx_footer_text_color";
     private static final String TENX_FOOTER_TEXT_COLOR_CUSTOM = "tenx_footer_text_color_custom";
+    private static final String QQS_SIZE = "qs_quick_tile_size";
+    private static final String QS_BG_SIZE = "qs_tile_bg_size";
+    private static final String QS_ICON_SIZE = "qs_tile_icon_size";
 
     private CustomSeekBarPreference mQsColumnsPortrait;
     private CustomSeekBarPreference mQsColumnsLandscape;
     private CustomSeekBarPreference mQsColumnsQuickbar;
     private CustomSeekBarPreference mQsPanelAlpha;
+    private CustomSeekBarPreference mQqsSize;
+    private CustomSeekBarPreference mQsBgSize;
+    private CustomSeekBarPreference mQsIconSize;
     private SystemSettingEditTextPreference mFooterString;
     private SystemSettingListPreference mQsFooterTextFont;
     private SystemSettingListPreference mBgColor;
@@ -70,6 +80,16 @@ public class QuickSettings extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.tenx_settings_quicksettings);
         PreferenceScreen prefScreen = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
+
+        Resources res = null;
+        Context ctx = getContext();
+        float density = Resources.getSystem().getDisplayMetrics().density;
+
+        try {
+            res = ctx.getPackageManager().getResourcesForApplication("com.android.systemui");
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
         mQsColumnsPortrait = (CustomSeekBarPreference) findPreference(PREF_COLUMNS_PORTRAIT);
         int columnsPortrait = Settings.System.getIntForUser(resolver,
@@ -88,6 +108,24 @@ public class QuickSettings extends SettingsPreferenceFragment
                 Settings.System.QS_QUICKBAR_COLUMNS, 6);
         mQsColumnsQuickbar.setValue(columnsQuickbar);
         mQsColumnsQuickbar.setOnPreferenceChangeListener(this);
+
+        mQqsSize = (CustomSeekBarPreference) findPreference(QQS_SIZE);
+        int qqsSize =  Settings.System.getIntForUser(ctx.getContentResolver(),
+                Settings.System.QS_QUICK_TILE_SIZE, res.getIdentifier("com.android.systemui:dimen/qs_quick_tile_size", null, null), UserHandle.USER_CURRENT);
+        mQqsSize.setValue(qqsSize);
+        mQqsSize.setOnPreferenceChangeListener(this);
+
+        mQsBgSize = (CustomSeekBarPreference) findPreference(QS_BG_SIZE);
+        int qsBg = Settings.System.getIntForUser(ctx.getContentResolver(),
+                Settings.System.QS_TILE_BG_SIZE, res.getIdentifier("com.android.systemui:dimen/qs_tile_background_size", null, null), UserHandle.USER_CURRENT);
+        mQsBgSize.setValue(qsBg);
+        mQsBgSize.setOnPreferenceChangeListener(this);
+
+        mQsIconSize = (CustomSeekBarPreference) findPreference(QS_ICON_SIZE);
+        int qsIcon =  Settings.System.getIntForUser(ctx.getContentResolver(),
+                Settings.System.QS_TILE_ICON_SIZE, res.getIdentifier("com.android.systemui:dimen/qs_tile_icon_size", null, null), UserHandle.USER_CURRENT);
+        mQsIconSize.setValue(qsIcon);
+        mQsIconSize.setOnPreferenceChangeListener(this);
 
         mQsPanelAlpha = (CustomSeekBarPreference) findPreference(KEY_QS_PANEL_ALPHA);
         int qsPanelAlpha = Settings.System.getInt(getActivity().getContentResolver(),
@@ -193,6 +231,21 @@ public class QuickSettings extends SettingsPreferenceFragment
             int value = (Integer) newValue;
             Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.QS_QUICKBAR_COLUMNS, value, UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mQqsSize) {
+            int value = (Integer) newValue;
+            Settings.System.putIntForUser(getContext().getContentResolver(),
+                    Settings.System.QS_QUICK_TILE_SIZE, value, UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mQsBgSize) {
+            int value = (Integer) newValue;
+            Settings.System.putIntForUser(getContext().getContentResolver(),
+                    Settings.System.QS_TILE_BG_SIZE, value, UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mQsIconSize) {
+            int value = (Integer) newValue;
+            Settings.System.putIntForUser(getContext().getContentResolver(),
+                    Settings.System.QS_TILE_ICON_SIZE, value, UserHandle.USER_CURRENT);
             return true;
         } else if (preference == mQsPanelAlpha) {
             int bgAlpha = (Integer) newValue;

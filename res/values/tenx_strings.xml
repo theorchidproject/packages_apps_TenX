@@ -1207,4 +1207,10 @@
     <!-- Custom statusbar height -->
     <string name="statusbar_height_title">Height</string>
 
+    <!-- QS Tile size -->
+    <string name="qs_tile_size_title">Size</string>
+    <string name="qs_quick_tile_size">Quick QS Tile</string>
+    <string name="qs_tile_background_size">QS Tile (Background)</string>
+    <string name="qs_tile_icon_size">QS Tile (Icon)</string>
+
 </resources>

@@ -152,6 +152,38 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:title="@string/qs_tile_size_title">
+
+        <com.tenx.support.preferences.CustomSeekBarPreference
+            android:key="qs_tile_bg_size"
+            android:title="@string/qs_quick_tile_size"
+            android:max="200"
+            settings:min="32"
+            settings:units="dp"
+            android:defaultValue="5"
+            android:persistent="false" />
+
+        <com.tenx.support.preferences.CustomSeekBarPreference
+            android:key="qs_quick_tile_size"
+            android:title="@string/qs_tile_background_size"
+            android:max="200"
+            settings:min="32"
+            settings:units="dp"
+            android:defaultValue="5"
+            android:persistent="false" />
+
+        <com.tenx.support.preferences.CustomSeekBarPreference
+            android:key="qs_tile_icon_size"
+            android:title="@string/qs_tile_icon_size"
+            android:max="40"
+            settings:min="10"
+            settings:units="dp"
+            android:defaultValue="5"
+            android:persistent="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/qs_panel_title">
 
         <com.tenx.support.preferences.SystemSettingSwitchPreference
