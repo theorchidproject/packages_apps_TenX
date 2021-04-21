@@ -1421,4 +1421,17 @@
         <item>3</item>
     </string-array>
 
+    <!-- QS Background primary styles -->
+    <string-array name="qs_background_primary_styles_entries" translatable="false">
+        <item>@string/qs_background_primary_styles_default</item>
+        <item>@string/qs_background_primary_styles_accent</item>
+        <item>@string/qs_background_primary_styles_gradient</item>
+    </string-array>
+
+    <string-array name="qs_background_primary_styles_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
 </resources>

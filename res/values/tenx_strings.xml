@@ -1214,4 +1214,10 @@
     <string name="qs_tile_background_size">QS Tile (Background)</string>
     <string name="qs_tile_icon_size">QS Tile (Icon)</string>
 
+    <!-- QS Primary background styles -->
+    <string name="qs_background_primary_styles_title">QS Background Primary Styles</string>
+    <string name="qs_background_primary_styles_default">Default</string>
+    <string name="qs_background_primary_styles_accent">Accent</string>
+    <string name="qs_background_primary_styles_gradient">Gradient</string>
+
 </resources>

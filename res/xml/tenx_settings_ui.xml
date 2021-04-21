@@ -84,6 +84,14 @@
             android:defaultValue="false" />
 
         <com.tenx.support.preferences.SystemSettingListPreference
+            android:key="qs_background_primary_styles"
+            android:title="@string/qs_background_primary_styles_title"
+            android:entries="@array/qs_background_primary_styles_entries"
+            android:entryValues="@array/qs_background_primary_styles_values"
+            android:summary="%s"
+            android:defaultValue="0" />
+
+        <com.tenx.support.preferences.SystemSettingListPreference
             android:key="qs_panel_bg_use_new_tint"
             android:title="@string/qs_bg_use_new_tint"
             android:dialogTitle="@string/qs_bg_use_new_tint"
