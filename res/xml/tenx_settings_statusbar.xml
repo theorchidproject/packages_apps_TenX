@@ -157,6 +157,26 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:title="@string/dual_row_title">
+
+        <com.tenx.support.preferences.SystemSettingListPreference
+            android:key="statusbar_dual_row"
+            android:title="@string/statusbar_dual_row_title"
+            android:entries="@array/statusbar_dual_row_entries"
+            android:entryValues="@array/statusbar_dual_row_values"
+            android:defaultValue="0"
+            android:summary="%s" />
+
+        <com.tenx.support.preferences.SystemSettingListPreference
+            android:key="dual_row_datausage"
+            android:title="@string/dual_row_datausage_title"
+            android:entries="@array/dual_row_datausage_entries"
+            android:entryValues="@array/dual_row_datausage_values"
+            android:defaultValue="0" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/battery_style_title">
 
         <com.tenx.support.preferences.SystemSettingListPreference
