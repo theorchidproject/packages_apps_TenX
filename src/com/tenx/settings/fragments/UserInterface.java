@@ -86,6 +86,8 @@ public class UserInterface extends DashboardFragment implements
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        mQsPanelImage = findPreference(FILE_QSPANEL_SELECT);
     }
 
     @Override
