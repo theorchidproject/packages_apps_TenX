@@ -2,11 +2,13 @@ package com.tenx.settings.fragments;
 
 import com.android.internal.logging.nano.MetricsProto;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.UserHandle;
 import android.content.ContentResolver;
 import android.content.res.Resources;
@@ -45,6 +47,10 @@ public class QSHeader extends SettingsPreferenceFragment implements
     private CustomSeekBarPreference mHeaderShadow;
     private ListPreference mHeaderProvider;
     private String mDaylightHeaderProvider;
+    private Preference mFileHeader;
+
+    private static final String FILE_HEADER_SELECT = "file_header_select";
+    private static final int REQUEST_PICK_IMAGE = 0;
 
     private static final String CUSTOM_HEADER_BROWSE = "custom_header_browse";
     private static final String CUSTOM_HEADER_IMAGE = "status_bar_custom_header";
@@ -95,6 +101,8 @@ public class QSHeader extends SettingsPreferenceFragment implements
         mHeaderProvider.setSummary(mHeaderProvider.getEntry());
         mHeaderProvider.setOnPreferenceChangeListener(this);
         mDaylightHeaderPack.setEnabled(providerName.equals(mDaylightHeaderProvider));
+
+        mFileHeader = findPreference(FILE_HEADER_SELECT);
     }
 
     private void updateHeaderProviderSummary(boolean headerEnabled) {
@@ -112,6 +120,17 @@ public class QSHeader extends SettingsPreferenceFragment implements
                 mDaylightHeaderPack.setSummary(mDaylightHeaderPack.getEntry());
             }
         }
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(Preference preference) {
+        if (preference == mFileHeader) {
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType("image/*");
+            startActivityForResult(intent, REQUEST_PICK_IMAGE);
+            return true;
+        }
+        return super.onPreferenceTreeClick(preference);
     }
 
     @Override
@@ -187,6 +206,18 @@ public class QSHeader extends SettingsPreferenceFragment implements
         for (String label : labelList) {
             entries.add(label);
             values.add(headerMap.get(label));
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent result) {
+        if (requestCode == REQUEST_PICK_IMAGE) {
+            if (resultCode != Activity.RESULT_OK) {
+                return;
+            }
+            final Uri imageUri = result.getData();
+            Settings.System.putString(getContentResolver(), Settings.System.STATUS_BAR_CUSTOM_HEADER_PROVIDER, "file");
+            Settings.System.putString(getContentResolver(), Settings.System.STATUS_BAR_FILE_HEADER_IMAGE, imageUri.toString());
         }
     }
 
