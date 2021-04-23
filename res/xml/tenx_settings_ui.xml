@@ -65,6 +65,10 @@
             android:key="android.theme.customization.statusbar_height"
             android:title="@string/statusbar_height_title" />
 
+        <ListPreference
+            android:key="android.theme.customization.seekbar_styles"
+            android:title="@string/custom_seekbar_style_title" />
+
         <com.tenx.support.preferences.SecureSettingSwitchPreference
             android:key="universal_disco"
             android:title="@string/universal_disco_title"
