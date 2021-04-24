@@ -134,6 +134,15 @@
            android:dependency="qs_panel_type_background"
            android:defaultValue="false" />
 
+       <com.tenx.support.preferences.SystemSettingSeekBarPreference
+           android:key="qs_panel_custom_image_blur_intensity"
+           android:title="@string/qs_bg_blur_image_intensity_title"
+           android:defaultValue="40"
+           android:dependency="qs_panel_custom_image_blur"
+           android:max="100"
+           settings:min="25"
+           settings:units="" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

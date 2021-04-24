@@ -581,6 +581,7 @@
     <string name="qs_bg_type_title">QS Panel Background</string>
     <string name="qs_bg_type_summary">Enable custom qs background</string>
     <string name="qs_bg_blur_image_title">Blur Image</string>
+    <string name="qs_bg_blur_image_intensity_title">Intensity</string>
     <string name="qs_bg_blur_image_summary">Blur Custom Image</string>
     <string name="file_header_select_title">Select local image</string>
     <string name="file_header_select_summary">Select image from storage</string>
