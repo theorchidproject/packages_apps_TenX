@@ -88,6 +88,14 @@
             android:entryValues="@array/qs_tile_style_values"
             android:defaultValue="0" />
 
+        <com.tenx.support.preferences.SystemSettingListPreference
+            android:key="qs_tile_style_tint"
+            android:title="@string/qs_tile_style_tint_title"
+            android:persistent="false"
+            android:entries="@array/qs_tile_style_tint_entries"
+            android:entryValues="@array/qs_tile_style_tint_values"
+            android:dependency="qs_tile_style" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

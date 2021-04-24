@@ -1548,4 +1548,18 @@
         <item>25</item>
     </string-array>
 
+    <!-- QS Tile style tint -->
+    <string-array name="qs_tile_style_tint_entries" translatable="false">
+        <item>@string/qs_tile_style_tint_a</item>
+        <item>@string/qs_tile_style_tint_b</item>
+        <item>@string/qs_tile_style_tint_c</item>
+        <item>@string/qs_tile_style_tint_d</item>
+    </string-array>
+    <string-array name="qs_tile_style_tint_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
 </resources>

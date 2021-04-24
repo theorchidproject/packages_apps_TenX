@@ -1287,4 +1287,11 @@
     <string name="qs_tile_style_tear_drop">Tear Drop</string>
     <string name="qs_tile_style_wavey">Wavey</string>
 
+    <!-- QS Tile style Tint -->
+    <string name="qs_tile_style_tint_title">Tint</string>
+    <string name="qs_tile_style_tint_a">Text color (Primary)</string>
+    <string name="qs_tile_style_tint_b">Text color (Secondary)</string>
+    <string name="qs_tile_style_tint_c">Accent color</string>
+    <string name="qs_tile_style_tint_d">Random color</string>
+
 </resources>

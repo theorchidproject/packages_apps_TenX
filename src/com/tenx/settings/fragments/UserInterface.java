@@ -63,6 +63,7 @@ import com.tenx.settings.ui.HeaderImagePreferenceController;
 import com.tenx.settings.ui.RGBAccentPickerPreferenceController;
 import com.tenx.settings.ui.RGBGradientPickerPreferenceController;
 import com.tenx.settings.ui.QsTileStylePreferenceController;
+import com.tenx.settings.ui.QsTileStyleTintPreferenceController;
 
 public class UserInterface extends DashboardFragment implements
         OnPreferenceChangeListener, Indexable {
@@ -104,6 +105,7 @@ public class UserInterface extends DashboardFragment implements
         controllers.add(new RGBAccentPickerPreferenceController(context));
         controllers.add(new RGBGradientPickerPreferenceController(context));
         controllers.add(new QsTileStylePreferenceController(context));
+        controllers.add(new QsTileStyleTintPreferenceController(context));
         controllers.add(new OverlayCategoryPreferenceController(context,
                 "android.theme.customization.font"));
         controllers.add(new OverlayCategoryPreferenceController(context,
