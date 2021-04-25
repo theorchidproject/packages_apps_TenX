@@ -403,6 +403,8 @@
     <string name="qs_columns_portrait_title">Columns (Portrait)</string>
     <string name="qs_columns_landscape_title">Columns (Landscape)</string>
     <string name="sysui_qqs_count_title">Columns (Quickbar)</string>
+    <string name="qs_rows_portrait_title">Rows (Portrait)</string>
+    <string name="qs_rows_landscape_title">Rows (Landscape)</string>
        
     <!-- Statusbar Tuner -->
     <string name="statusbar_icons_title">Icons</string>
