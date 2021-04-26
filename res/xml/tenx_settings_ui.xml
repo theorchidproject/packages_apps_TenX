@@ -78,6 +78,19 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:title="@string/ui_style_title">
+
+        <com.tenx.support.preferences.SystemSettingListPreference
+            android:key="qs_tile_style"
+            android:title="@string/qs_tile_style_title"
+            android:persistent="false"
+            android:entries="@array/qs_tile_style_entries"
+            android:entryValues="@array/qs_tile_style_values"
+            android:defaultValue="0" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/qs_style_title">
 
         <com.tenx.support.preferences.SystemSettingMasterSwitchPreference

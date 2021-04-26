@@ -1258,4 +1258,33 @@
     <!-- Custom Seekbar styles -->
     <string name="custom_seekbar_style_title">Seekbar</string>
 
+    <!-- QS Tile styles -->
+    <string name="ui_style_title">Styles</string>
+    <string name="qs_tile_style_title">QS Tile</string>
+    <string name="qs_tile_style_default">Default</string>
+    <string name="qs_tile_style_neon_like">Neon Like</string>
+    <string name="qs_tile_style_triangles">Triangles</string>
+    <string name="qs_tile_style_attempt_mountain">An Attempt to Mountain</string>
+    <string name="qs_tile_style_badge">Badge</string>
+    <string name="qs_tile_style_badge_2">Badge 2</string>
+    <string name="qs_tile_style_circle_outline">Circle Outline</string>
+    <string name="qs_tile_style_circle_trim">Circle Trim</string>
+    <string name="qs_tile_style_cookie">Cookie</string>
+    <string name="qs_tile_style_cosmos">Cosmos</string>
+    <string name="qs_tile_style_diamond">Diamond</string>
+    <string name="qs_tile_style_dotted">Dotted Circle</string>
+    <string name="qs_tile_style_dual_tone">Dual tone</string>
+    <string name="qs_tile_style_gear">Gear</string>
+    <string name="qs_tile_style_hexagon">Hexagon</string>
+    <string name="qs_tile_style_ink">Int</string>
+    <string name="qs_tile_style_ninja">Ninja</string>
+    <string name="qs_tile_style_pokesign">Pokesign</string>
+    <string name="qs_tile_style_square">Square</string>
+    <string name="qs_tile_style_squaremedo">Squaremedo</string>
+    <string name="qs_tile_style_squircle">Squircle</string>
+    <string name="qs_tile_style_squircle_trim">Squircle Trim</string>
+    <string name="qs_tile_style_star">Star</string>
+    <string name="qs_tile_style_tear_drop">Tear Drop</string>
+    <string name="qs_tile_style_wavey">Wavey</string>
+
 </resources>
