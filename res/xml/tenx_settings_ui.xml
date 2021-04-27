@@ -69,6 +69,14 @@
             android:key="android.theme.customization.seekbar_styles"
             android:title="@string/custom_seekbar_style_title" />
 
+        <ListPreference
+            android:key="android.theme.customization.signal_icon"
+            android:title="@string/custom_signal_bar_title" />
+
+        <ListPreference
+            android:key="android.theme.customization.wifi_icon"
+            android:title="@string/custom_wifi_bar_title" />
+
         <com.tenx.support.preferences.SecureSettingSwitchPreference
             android:key="universal_disco"
             android:title="@string/universal_disco_title"

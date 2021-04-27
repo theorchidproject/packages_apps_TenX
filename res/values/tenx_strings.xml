@@ -1321,4 +1321,10 @@
     <string name="fod_pressed_color_green">Green</string>
     <string name="fod_pressed_color_yellow">Yellow</string>
 
+    <!-- Custom Signal bar icons -->
+    <string name="custom_signal_bar_title">Signal</string>
+
+    <!-- Custom Wi-Fi bar icons -->
+    <string name="custom_wifi_bar_title">Wi-Fi</string>
+
 </resources>

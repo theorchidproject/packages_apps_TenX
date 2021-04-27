@@ -120,6 +120,10 @@ public class UserInterface extends DashboardFragment implements
                 "android.theme.customization.statusbar_height"));
         controllers.add(new OverlayCategoryPreferenceController(context,
                 "android.theme.customization.seekbar_styles"));
+        controllers.add(new OverlayCategoryPreferenceController(context,
+                "android.theme.customization.signal_icon"));
+        controllers.add(new OverlayCategoryPreferenceController(context,
+                "android.theme.customization.wifi_icon"));
         return controllers;
     }
 
