@@ -54,6 +54,13 @@
             android:entryValues="@array/lockscreen_clock_values"
             android:defaultValue="2" />
 
+        <com.tenx.support.preferences.SystemSettingListPreference
+            android:key="lockscreen_clock_animation_selection"
+            android:title="@string/clock_lottie_animation_title"
+            android:entries="@array/clock_lottie_animation_entries"
+            android:entryValues="@array/clock_lottie_animation_values"
+            android:defaultValue="1" />
+
         <ListPreference
             android:key="lock_clock_fonts"
             android:title="@string/lock_clock_font_title"
