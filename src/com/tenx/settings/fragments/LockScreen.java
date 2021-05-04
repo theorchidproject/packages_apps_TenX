@@ -19,6 +19,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,6 +29,7 @@ import android.content.res.Resources;
 import android.hardware.fingerprint.FingerprintManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.provider.Settings;
 import androidx.preference.*;
 import android.view.Menu;
@@ -73,6 +77,7 @@ public class LockScreen extends SettingsPreferenceFragment implements
     private static final String FOD_SETTINGS_CATEGORY = "fod_settings";
     private static final String KEY_CHARGE_INFO_FONT = "lockscreen_battery_info_font";
     private static final String LOCKSCREEN_MAX_NOTIF_CONFIG = "lockscreen_max_notif_cofig";
+    private static final String LOTTIE_ANIMATION_SIZE = "lockscreen_clock_animation_size";
 
     private Preference mFODIconPicker;
     private ListPreference mLockClockFonts;
@@ -85,6 +90,7 @@ public class LockScreen extends SettingsPreferenceFragment implements
     private CustomSeekBarPreference mOwnerInfoFontSize;
     private CustomSeekBarPreference mCustomTextClockFontSize;
     private CustomSeekBarPreference mMaxKeyguardNotifConfig;
+    private CustomSeekBarPreference mLottieAnimationSize;
     private ColorPickerPreference mLockscreenPhoneColorPicker;
     private ColorPickerPreference mLockscreenCameraColorPicker;
     private ColorPickerPreference mLockscreenIndicationTextColorPicker;
@@ -103,6 +109,16 @@ public class LockScreen extends SettingsPreferenceFragment implements
         final PreferenceScreen prefScreen = getPreferenceScreen();
         Resources resources = getResources();
         ContentResolver resolver = getActivity().getContentResolver();
+
+        Resources res = null;
+        Context ctx = getContext();
+        float density = Resources.getSystem().getDisplayMetrics().density;
+
+        try {
+            res = ctx.getPackageManager().getResourcesForApplication("com.android.systemui");
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
         int intColor;
         String hexColor;
@@ -247,6 +263,12 @@ public class LockScreen extends SettingsPreferenceFragment implements
                 Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG, 3);
         mMaxKeyguardNotifConfig.setValue(kgconf);
         mMaxKeyguardNotifConfig.setOnPreferenceChangeListener(this);
+
+        mLottieAnimationSize = (CustomSeekBarPreference) findPreference(LOTTIE_ANIMATION_SIZE);
+        int lottieSize = Settings.System.getIntForUser(ctx.getContentResolver(),
+                Settings.System.LOCKSCREEN_CLOCK_ANIMATION_SIZE, res.getIdentifier("com.android.systemui:dimen/lottie_animation_width_height", null, null), UserHandle.USER_CURRENT);
+        mLottieAnimationSize.setValue(lottieSize);
+        mLottieAnimationSize.setOnPreferenceChangeListener(this);
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -384,6 +406,11 @@ public class LockScreen extends SettingsPreferenceFragment implements
             int kgconf = (Integer) newValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG, kgconf);
+            return true;
+        } else if (preference == mLottieAnimationSize) {
+            int value = (Integer) newValue;
+            Settings.System.putIntForUser(getContext().getContentResolver(),
+                    Settings.System.LOCKSCREEN_CLOCK_ANIMATION_SIZE, value, UserHandle.USER_CURRENT);
             return true;
         }
         return false;

@@ -61,6 +61,14 @@
             android:entryValues="@array/clock_lottie_animation_values"
             android:defaultValue="1" />
 
+        <com.tenx.support.preferences.CustomSeekBarPreference
+            android:key="lockscreen_clock_animation_size"
+            android:title="@string/clock_lottie_animation_size_title"
+            android:max="500"
+            settings:min="300"
+            settings:units="dp"
+            android:defaultValue="300" />
+
         <ListPreference
             android:key="lock_clock_fonts"
             android:title="@string/lock_clock_font_title"
