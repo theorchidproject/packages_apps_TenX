@@ -128,6 +128,29 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:title="@string/tenx_website_title">
+
+        <Preference
+            android:title="@string/tenx_website_title"
+            android:summary="@string/tenx_website_summary"
+            android:icon="@drawable/ic_tenx_website">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://tenxos.me" />
+        </Preference>
+
+        <Preference
+            android:title="@string/tenx_blog_title"
+            android:summary="@string/tenx_blog_summary"
+            android:icon="@drawable/ic_tenx_blog">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://tenxos-blog.me" />
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/tenx_downloads_title">
 
         <Preference

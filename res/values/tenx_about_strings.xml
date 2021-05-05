@@ -57,4 +57,10 @@
     <string name="tenx_downloads_title">Downloads</string>
     <string name="tenx_downloads_summary">Download the official builds for your Device</string>
 
+    <!-- Website & Blog -->
+    <string name="tenx_website_title">Website</string>
+    <string name="tenx_website_summary">Our Website</string>
+    <string name="tenx_blog_title">Blog</string>
+    <string name="tenx_blog_summary">Our Blog</string>
+
 </resources>
