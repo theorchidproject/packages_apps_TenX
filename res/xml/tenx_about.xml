@@ -35,15 +35,6 @@
         </Preference>
 
         <Preference
-            android:title="@string/madhav_saladi_title"
-            android:summary="@string/madhav_saladi_summary"
-            android:icon="@drawable/ic_tenx_lead_developer">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="https://t.me/BabluS" />
-        </Preference>
-
-        <Preference
             android:title="@string/roger_t_title"
             android:summary="@string/roger_t_summary"
             android:icon="@drawable/ic_tenx_designer">

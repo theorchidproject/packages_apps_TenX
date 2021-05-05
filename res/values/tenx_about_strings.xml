@@ -22,8 +22,6 @@
     <string name="tenx_team_title">Team</string>
     <string name="advaith_bhat_title">Advaith Bhat (Aston-Martinn)</string>
     <string name="advaith_bhat_summary" translatable="false">• Founder \n• Core Developer \n• Maintainer</string>
-    <string name="madhav_saladi_title">Madhav Saladi (BabluS)</string>
-    <string name="madhav_saladi_summary" translatable="false">• Lead Developer \n• Maintainer</string>
     <string name="roger_t_title">Roger Truttmann (Roger.T)</string>
     <string name="roger_t_summary" translatable="false">• Graphics Designer \n• Designer</string>
 

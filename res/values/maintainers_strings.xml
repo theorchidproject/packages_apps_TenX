@@ -38,10 +38,6 @@
     <!-- Realme title -->
     <string name="realme_title">Realme</string>
 
-    <!-- Realme 5pro -->
-    <string name="realme_5_pro_title">Realme 5 Pro</string>
-    <string name="realme_5_pro_summary" translatable="false">- RMX1971 \n- Madhav Saladi (BabluS)</string>
-
     <!-- Realme XT -->
     <string name="realme_xt_title">Realme XT</string>
     <string name="realme_xt_summary" translatable="false">- RMX1921 \n- Advaith Bhat</string>

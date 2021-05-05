@@ -45,15 +45,6 @@
         </Preference>
 
         <Preference
-            android:title="@string/realme_5_pro_title"
-            android:summary="@string/realme_5_pro_summary"
-            android:icon="@drawable/ic_tenx_devices">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="https://t.me/BabluS" />
-        </Preference>
-
-        <Preference
             android:title="@string/realme_c3_title"
             android:summary="@string/realme_c3_summary"
             android:icon="@drawable/ic_tenx_devices">
