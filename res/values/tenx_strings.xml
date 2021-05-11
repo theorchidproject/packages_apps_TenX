@@ -1373,4 +1373,11 @@
     <string name="qs_tile_mask_title">QS Tile Mask</string>
     <string name="qs_tile_mask_summary">Enable/disable QS Tile Mask</string>
 
+    <!-- Cusom settings dashboard icons -->
+    <string name="settings_dashboard_icons_title">Settings dashboard icons</string>
+    <string name="settings_dashboard_icons_default">Default</string>
+    <string name="settings_dashboard_icons_oos">Oxygen OS</string>
+    <string name="settings_dashboard_icons_accent">Accent</string>
+    <string name="settings_dashboard_icons_colorfull">Colorfull</string>
+
 </resources>

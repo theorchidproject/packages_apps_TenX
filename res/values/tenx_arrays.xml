@@ -1650,4 +1650,19 @@
         <item>5</item>
     </string-array>
 
+    <!-- Settings dashboard icons -->
+    <string-array name="settings_dashboard_icons_entries" translatable="false">
+        <item>@string/settings_dashboard_icons_default</item>
+        <item>@string/settings_dashboard_icons_oos</item>
+        <item>@string/settings_dashboard_icons_accent</item>
+        <item>@string/settings_dashboard_icons_colorfull</item>
+    </string-array>
+
+    <string-array name="settings_dashboard_icons_values" translatable="false">
+        <item>1</item>
+        <item>0</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
 </resources>
