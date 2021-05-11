@@ -1369,4 +1369,8 @@
     <!-- Clock lottie animation size -->
     <string name="clock_lottie_animation_size_title">Animation size</string>
 
+    <!-- QS Tile mask -->
+    <string name="qs_tile_mask_title">QS Tile Mask</string>
+    <string name="qs_tile_mask_summary">Enable/disable QS Tile Mask</string>
+
 </resources>

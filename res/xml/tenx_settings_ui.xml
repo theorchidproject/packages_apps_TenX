@@ -88,12 +88,19 @@
     <PreferenceCategory
         android:title="@string/ui_style_title">
 
+        <com.tenx.support.preferences.SystemSettingSwitchPreference
+            android:key="qs_tile_mask"
+            android:title="@string/qs_tile_mask_title"
+            android:summary="@string/qs_tile_mask_summary"
+            android:defaultValue="false" />
+
         <com.tenx.support.preferences.SystemSettingListPreference
             android:key="qs_tile_style"
             android:title="@string/qs_tile_style_title"
             android:persistent="false"
             android:entries="@array/qs_tile_style_entries"
             android:entryValues="@array/qs_tile_style_values"
+            android:dependency="qs_tile_mask"
             android:defaultValue="0" />
 
         <com.tenx.support.preferences.SystemSettingListPreference
