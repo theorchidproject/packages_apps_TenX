@@ -1385,4 +1385,7 @@
     <string name="lockscreen_blur_title">Background blur</string>
     <string name="lockscreen_blur_summary">Blur lock screen background</string>
 
+    <!-- Notification background opacity -->
+    <string name="notification_alpha_title">Notification background opacity</string>
+
 </resources>

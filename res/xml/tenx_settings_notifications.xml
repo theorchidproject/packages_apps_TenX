@@ -52,6 +52,14 @@
         android:key="notification_misc"
         android:title="@string/notification_misc">
 
+        <com.tenx.support.preferences.SystemSettingSeekBarPreference
+            android:key="notification_bg_alpha"
+            android:title="@string/notification_alpha_title"
+            android:defaultValue="255"
+            android:max="255"
+            settings:min="0"
+            settings:units="" />
+
         <com.tenx.support.preferences.SystemSettingSwitchPreference
             android:key="notification_guts_kill_app_button"
             android:title="@string/notification_guts_kill_app_button_title"
