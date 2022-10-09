@@ -121,8 +121,8 @@
             android:summary="@string/status_bar_notif_count_summary"
             android:defaultValue="false" />
 
-        <com.tenx.support.preferences.SystemSettingMasterSwitchPreference
-            android:key="battery_bar_enabled"
+        <Preference
+            android:key="battery_bar_settings"
             android:title="@string/sb_battery_bar_title"
             android:summary="@string/sb_battery_bar_summary"
             android:fragment="com.tenx.settings.fragments.BatteryBar" />
